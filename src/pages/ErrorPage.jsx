@@ -4,7 +4,7 @@ import Error from "../components/error/Error";
 import PropTypes from "prop-types";
 
 const ErrorPage = ({ error = 1 }) => {
-  // menampilkan jenis error tergantung dari jenis error yang terjadi
+  // menampilkan jenis error berdasarkan props
   return (
     <>
     {error === 1 && (
