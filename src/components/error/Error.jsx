@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 const Error = ({ nav, title, desc }) => {
   return (
-    <section className="w-3/4 mx-auto">
+    <section className="w-4/5 mx-auto">
       <div className="text-sm text-black mt-12">
         <p className="opacity-50 inline">Home / </p>
         <p className="opacity-100 inline">{nav}</p>
