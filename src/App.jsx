@@ -7,6 +7,7 @@ import Navbar from './layouts/Navbar';
 import AuthPage from './pages/AuthPage';
 import AboutPage from './pages/AboutPage';
 import BestSellingPage from './pages/BestSellingPage';
+import WishlistPage from './pages/WishlistPage';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path='/auth' element={<AuthPage />} />
+          <Route path='/wishlist' element={<WishlistPage />} />
           <Route path='/best-selling' element={<BestSellingPage />} />
           <Route path='/about' element={<AboutPage />} />
           <Route path='*' element={<ErrorPage />} />
