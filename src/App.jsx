@@ -8,6 +8,9 @@ import AuthPage from './pages/AuthPage';
 import AboutPage from './pages/AboutPage';
 import BestSellingPage from './pages/BestSellingPage';
 import ProfilePage from './pages/ProfilePage';
+import WishlistPage from './pages/WishlistPage';
+import ContactPage from './pages/ContactPage';
+import Homepage from './pages/Homepage';
 
 const App = () => {
   return (
@@ -15,10 +18,13 @@ const App = () => {
       <BrowserRouter>
         <Navbar />
         <Routes>
+          <Route path='/' element={<Homepage />} />
           <Route path='/auth' element={<AuthPage />} />
+          <Route path='/wishlist' element={<WishlistPage />} />
           <Route path='/best-selling' element={<BestSellingPage />} />
           <Route path='/about' element={<AboutPage />} />
           <Route path='/my-account' element={<ProfilePage />} />
+          <Route path='/contact' element={<ContactPage />} />
           <Route path='*' element={<ErrorPage />} />
         </Routes>
         <Footer />

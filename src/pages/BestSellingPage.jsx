@@ -4,7 +4,7 @@ import product from '../assets/best_seling/product.png';
 // Card Component
 const ProductCard = ({ title, price, originalPrice, rating, reviews, isNew, discount, image }) => {
   return (
-    <div className='group  rounded-sm'>
+    <div className='group rounded-sm'>
       <div className='relative'>
         <div className='relative h-64 overflow-hidden'>
           <img src={image} alt={title} className='w-full h-full object-contain bg-gray-100' />
