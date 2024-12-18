@@ -39,7 +39,7 @@ const GalleryProduct = () => {
               <img
                 src={img}
                 alt={`product ${index + 1}`}
-                className="w-full h-[240px] object-cover"
+                className="w-full h-[240px] sm:h-[360px] object-cover"
               />
             </SwiperSlide>
           ))}
@@ -54,7 +54,7 @@ const GalleryProduct = () => {
           alt="product"
           className="w-full h-[480px] object-cover"
         />
-        <div className="grid grid-flow-col justify-stretch space-x-3 mt-4">
+        <div className="flex space-x-3 mt-4 overflow-x-auto pb-2">
           {images.slice(1).map((img, index) => (
             <img
               key={index}
