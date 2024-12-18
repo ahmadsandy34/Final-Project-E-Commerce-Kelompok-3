@@ -1,10 +1,11 @@
 import React from "react";
 import Breadcrumb from "../components/about/Breadcrumb";
 import ProductCard from "../components/cart/ProductCard";
+import Invoice from "../components/cart/Invoice";
 
 const CartPage = () => {
   return (
-    <div className="max-w-screen-xl mx-auto md:px-4 py-4">
+    <div className="max-w-screen-xl mx-auto py-4">
       <Breadcrumb />
       <div className="px-4">
         <div>
@@ -40,18 +41,7 @@ const CartPage = () => {
           <div className="flex justify-end">
             <div className="space-y-4 border-2 border-black rounded p-4 w-full sm:w-[90%]">
               <h2 className="text-xl font-medium">Cart Total</h2>
-              <div className="flex justify-between border-b-2 border-gray-400 pb-3">
-                <p>Subtotal</p>
-                <p>$1750</p>
-              </div>
-              <div className="flex justify-between border-b-2 border-gray-400 pb-3">
-                <p>Shipping</p>
-                <p>Free</p>
-              </div>
-              <div className="flex justify-between">
-                <p>Total</p>
-                <p>$1750</p>
-              </div>
+              <Invoice />
               <div className="hidden sm:block">
                 <div className="flex justify-center mt-6">
                   <button className="bg-[#DB4444] hover:bg-[#CD3535FF] rounded text-white p-2 w-[70%] font-medium">
