@@ -11,6 +11,7 @@ import ProfilePage from './pages/ProfilePage';
 import WishlistPage from './pages/WishlistPage';
 import ContactPage from './pages/ContactPage';
 import Homepage from './pages/Homepage';
+import ProductDetailPage from './pages/ProductDetailPage';
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path='/auth' element={<AuthPage />} />
           <Route path='/wishlist' element={<WishlistPage />} />
           <Route path='/best-selling' element={<BestSellingPage />} />
+          <Route path='/product/detail' element={<ProductDetailPage />} />
           <Route path='/about' element={<AboutPage />} />
           <Route path='/my-account' element={<ProfilePage />} />
           <Route path='/contact' element={<ContactPage />} />
