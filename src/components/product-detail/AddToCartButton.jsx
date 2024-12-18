@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import LoveIcon from "../../assets/product-detail/LoveIcon";
 import SelectSizeButton from "./SelectSizeButton";
+import ChangeQuantityButton from "./ChangeQuantityButton";
 
 const AddToCartButton = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -11,17 +12,7 @@ const AddToCartButton = () => {
       <div className="hidden md:block">
         <SelectSizeButton />
         <div className="flex items-center w-full gap-4 mt-8">
-          <div className="flex items-center w-1/3">
-            <button className="border border-black px-4 py-2 text-semibold rounded-tl rounded-bl hover:bg-[#DB4444] hover:text-white hover:border-0">
-              -
-            </button>
-            <p className="px-4 py-2 border border-black w-full text-center">
-              1
-            </p>
-            <button className="border border-black px-4 py-2 text-semibold rounded-tr rounded-br hover:bg-[#DB4444] hover:text-white hover:border-0">
-              +
-            </button>
-          </div>
+          <ChangeQuantityButton />
           <div className="flex space-x-0.5 w-2/3">
             <button className="w-full bg-[#DB4444] hover:bg-[#CA3434FF] text-white px-4 py-2 rounded">
               Add to Cart
@@ -49,14 +40,14 @@ const AddToCartButton = () => {
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
+                      fillRule="evenodd"
+                      clipRule="evenodd"
                       d="M2.54512 13.4556C2.21038 13.1209 2.21038 12.5782 2.54512 12.2434L12.2426 2.54597C12.5773 2.21124 13.12 2.21124 13.4548 2.54597C13.7895 2.88071 13.7895 3.42342 13.4548 3.75816L3.7573 13.4556C3.42257 13.7904 2.87985 13.7904 2.54512 13.4556Z"
                       fill="#222222"
                     />
                     <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
+                      fillRule="evenodd"
+                      clipRule="evenodd"
                       d="M2.54512 2.54597C2.87985 2.21124 3.42257 2.21124 3.7573 2.54597L13.4548 12.2434C13.7895 12.5782 13.7895 13.1209 13.4548 13.4556C13.12 13.7904 12.5773 13.7904 12.2426 13.4556L2.54512 3.75816C2.21038 3.42342 2.21038 2.88071 2.54512 2.54597Z"
                       fill="#222222"
                     />
@@ -71,17 +62,7 @@ const AddToCartButton = () => {
                 </div>
               </div>
               <SelectSizeButton />
-              <div className="flex items-center w-1/3 my-4">
-                <button className="border border-black px-4 py-2 text-semibold rounded-tl rounded-bl hover:bg-[#DB4444] hover:text-white hover:border-0">
-                  -
-                </button>
-                <p className="px-4 py-2 border border-black w-full text-center">
-                  1
-                </p>
-                <button className="border border-black px-4 py-2 text-semibold rounded-tr rounded-br hover:bg-[#DB4444] hover:text-white hover:border-0">
-                  +
-                </button>
-              </div>
+              <ChangeQuantityButton />
             </div>
           )}
           <div className="flex space-x-2 w-full">
