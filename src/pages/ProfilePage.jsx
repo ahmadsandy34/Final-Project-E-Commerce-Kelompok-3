@@ -18,7 +18,7 @@ const ProfilePage = () => {
             Welcome! <span className="text-[#DB4444]">Deni</span>
           </p>
         </div>
-        <div className="flex flex-col md:flex-row gap-16">
+        <div className="flex flex-col md:flex-row gap-x-16">
           <MenuProfile
             activeMenu={activeMenu}
             setActiveMenu={handleActiveMenu}

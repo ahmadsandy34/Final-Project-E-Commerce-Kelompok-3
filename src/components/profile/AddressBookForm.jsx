@@ -8,7 +8,7 @@ const AddressBookForm = ({ setActiveComponent, isEdit }) => {
       </h1>
       <form className="mt-4 space-y-4">
         <div className="h-[400px]">
-          <div className="grid grid-flow-col justify-stretch gap-12">
+          <div className="grid md:grid-flow-col justify-stretch gap-x-12">
             <div className="space-y-3">
               <label htmlFor="name">Full Name</label>
               <input
@@ -34,14 +34,14 @@ const AddressBookForm = ({ setActiveComponent, isEdit }) => {
             />
           </div>
         </div>
-        <div className="flex justify-end gap-4">
+        <div className="flex justify-center md:justify-end gap-4">
           <button
             onClick={() => setActiveComponent("address-book-list")}
             className="p-2 hover:text-[#DB4444]"
           >
             Cancel
           </button>
-          <button className="bg-[#DB4444] text-white py-3 px-10 rounded-md hover:bg-[#BE3636FF]">
+          <button className="bg-[#DB4444] text-white py-3 px-3 md:px-10 rounded-md hover:bg-[#BE3636FF]">
             Save Changes
           </button>
         </div>

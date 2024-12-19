@@ -7,7 +7,7 @@ const MyProfile = () => {
         Edit Your Profile
       </h1>
       <form className="mt-4 space-y-4">
-        <div className="grid grid-flow-col justify-stretch gap-12">
+        <div className="grid md:grid-flow-col justify-stretch gap-x-12 space-y-3">
           <div className="space-y-3">
             <label htmlFor="name">Full Name</label>
             <input
@@ -20,7 +20,7 @@ const MyProfile = () => {
             <label htmlFor="email">Email</label>
             <input
               type="email"
-              id="email"
+              id="email2"
               className="w-full bg-gray-100 text-gray-500 rounded-md p-2"
             />
           </div>

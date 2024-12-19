@@ -1,7 +1,7 @@
 import React from "react";
 import Breadcrumb from "../components/about/Breadcrumb";
 import ProductCard from "../components/cart/ProductCard";
-import Invoice from "../components/cart/Invoice";
+import InvoiceDetail from "../components/cart/InvoiceDetail";
 
 const CartPage = () => {
   return (
@@ -41,7 +41,7 @@ const CartPage = () => {
           <div className="flex justify-end">
             <div className="space-y-4 border-2 border-black rounded p-4 w-full sm:w-[90%]">
               <h2 className="text-xl font-medium">Cart Total</h2>
-              <Invoice />
+              <InvoiceDetail />
               <div className="hidden sm:block">
                 <div className="flex justify-center mt-6">
                   <button className="bg-[#DB4444] hover:bg-[#CD3535FF] rounded text-white p-2 w-[70%] font-medium">

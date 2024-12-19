@@ -1,6 +1,6 @@
 import React from "react";
 import Breadcrumb from "../components/about/Breadcrumb";
-import Invoice from "../components/cart/Invoice";
+import InvoiceDetail from "../components/cart/InvoiceDetail";
 
 const CheckoutStatusPage = () => {
   return (
@@ -15,7 +15,7 @@ const CheckoutStatusPage = () => {
           </div>
           <p>$650</p>
         </div>
-        <Invoice />
+        <InvoiceDetail />
         <button className="bg-[#DB4444] hover:bg-[#CD3535FF] rounded text-white p-4 w-full font-medium">
           Back to Home
         </button>

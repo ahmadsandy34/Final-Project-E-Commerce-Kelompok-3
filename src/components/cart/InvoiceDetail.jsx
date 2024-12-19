@@ -1,6 +1,6 @@
 import React from "react";
 
-const Invoice = () => {
+const InvoiceDetail = () => {
   return (
     <div>
       <div className="flex justify-between border-b-2 border-gray-400 py-3">
@@ -19,4 +19,4 @@ const Invoice = () => {
   );
 };
 
-export default Invoice;
+export default InvoiceDetail;

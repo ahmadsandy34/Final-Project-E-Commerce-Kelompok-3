@@ -15,6 +15,7 @@ import Homepage from './pages/Homepage';
 import ProductDetailPage from './pages/ProductDetailPage';
 import CartPage from './pages/CartPage';
 import CheckoutStatusPage from './pages/CheckoutStatusPage';
+import BillingPage from './pages/BillingPage';
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
           <Route path='/best-selling' element={<BestSellingPage />} />
           <Route path='/product/detail' element={<ProductDetailPage />} />
           <Route path='/cart' element={<CartPage />} />
+          <Route path='/checkout/billing' element={<BillingPage />} />
           <Route path='/checkout/status' element={<CheckoutStatusPage />} />
           <Route path='/about' element={<AboutPage />} />
           <Route path='/my-account' element={<ProfilePage />} />
