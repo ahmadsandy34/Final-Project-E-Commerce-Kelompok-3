@@ -4,10 +4,8 @@ import { useParams, Link } from 'react-router-dom';
 import { CategorySidebar } from '../components/products/CategorySidebar';
 import { ProductSection } from '../components/products/ProductSection';
 
-
-
 // data/productData.js
-export const categories = ["Woman's Fashion", "Men's Fashion", 'Electronics', 'Home & Lifestyle', 'Medicine', 'Sports & Outdoor', "Baby's & Toys", 'Groceries & Pets', 'Health & Beauty'];
+const categories = ["Woman's Fashion", "Men's Fashion", 'Electronics', 'Home & Lifestyle', 'Medicine', 'Sports & Outdoor', "Baby's & Toys", 'Groceries & Pets', 'Health & Beauty'];
 
 export const products = [
   // Electronics
@@ -280,7 +278,7 @@ export const products = [
 ];
 
 // pages/ProductPage.jsx
-export const ProductPage = () => {
+const ProductPage = () => {
   const { category } = useParams();
   const [activeCategory, setActiveCategory] = useState('all');
 
@@ -304,3 +302,5 @@ export const ProductPage = () => {
     </main>
   );
 };
+
+export default ProductPage;
