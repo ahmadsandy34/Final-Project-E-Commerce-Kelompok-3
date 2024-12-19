@@ -8,6 +8,7 @@ import AuthPage from './pages/AuthPage';
 import AboutPage from './pages/AboutPage';
 import BestSellingPage from './pages/BestSellingPage';
 import WishlistPage from './pages/WishlistPage';
+import { ProductPage } from './pages/ProductsPage';
 
 const App = () => {
   return (
@@ -17,6 +18,8 @@ const App = () => {
         <Routes>
           <Route path='/auth' element={<AuthPage />} />
           <Route path='/wishlist' element={<WishlistPage />} />
+          <Route path='/products' element={<ProductPage />} />
+          <Route path='/products/category/:category' element={<ProductPage />} />
           <Route path='/best-selling' element={<BestSellingPage />} />
           <Route path='/about' element={<AboutPage />} />
           <Route path='*' element={<ErrorPage />} />
