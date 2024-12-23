@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import LoveIcon from "../../assets/product-detail/LoveIcon";
 
 const ProductCard = ({ item }) => {
@@ -90,7 +91,9 @@ const RelatedProduct = () => {
   return (
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
       {products.map((item, index) => (
-        <ProductCard key={index} item={item} />
+        <Link to="/product/detail" className="contents" key={index}>
+          <ProductCard key={index} item={item} />
+        </Link>
       ))}
     </div>
   );

@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Breadcrumb from "../components/profile/Breadcrumb";
 import GalleryProduct from "../components/product-detail/GalleryProduct";
 import ProductInformation from "../components/product-detail/ProductInformation";
 import RelatedProduct from "../components/product-detail/RelatedProduct";
 
 const ProductDetailPage = () => {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, []);
   return (
-    <div className="max-w-screen-xl mx-auto md:px-4 py-4">
+    <div className="max-w-screen-xl mx-auto md:px-4 py-4" ref={ref}>
       <Breadcrumb />
       <div className="mt-6 lg:flex gap-6">
         <GalleryProduct />

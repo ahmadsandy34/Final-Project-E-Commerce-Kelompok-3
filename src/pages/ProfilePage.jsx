@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Breadcrumb from "../components/profile/Breadcrumb";
 import MenuProfile from "../components/profile/MenuProfile";
 import MainComponent from "../components/profile/MainComponent";
@@ -9,9 +9,17 @@ const ProfilePage = () => {
     setActiveMenu(menu);
   };
 
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, []);
+
   return (
     <div className="bg-white">
-      <div className="max-w-screen-xl mx-auto px-4 py-4">
+      <div className="max-w-screen-xl mx-auto px-4 py-4" ref={ref}>
         <div className="flex justify-between items-center mb-12">
           <Breadcrumb />
           <p>

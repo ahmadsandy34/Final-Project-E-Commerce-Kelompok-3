@@ -14,7 +14,7 @@ const MenuProfile = ({ activeMenu, setActiveMenu }) => {
               "bg-[#DB4444] border-[#DB4444] text-white"
             } border border-gray-500 py-2 px-3 rounded hover:border-[#DB4444] hover:bg-[#DB4444] hover:text-white`}
           >
-            <p className="text-sm font-medium">My Pofile</p>
+            <p className="text-sm font-medium">My Profile</p>
           </button>
           <button
             onClick={() => {

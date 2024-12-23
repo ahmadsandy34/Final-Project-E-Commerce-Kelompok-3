@@ -11,7 +11,7 @@ const Navbar = () => {
         <div className='flex justify-between items-center max-w-screen-xl mx-auto'>
           <p className='text-sm text-center flex-1'>
             Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!{' '}
-            <Link to='#' className='font-bold hover:underline'>
+            <Link to='/best-selling' className='font-bold hover:underline'>
               ShopNow
             </Link>
           </p>
@@ -43,7 +43,7 @@ const Navbar = () => {
               <Link to='/about' className='text-gray-700 hover:text-black'>
                 About
               </Link>
-              <Link to='/signup' className='text-gray-700 hover:text-black'>
+              <Link to='/auth' className='text-gray-700 hover:text-black'>
                 Sign Up
               </Link>
             </div>
@@ -140,7 +140,7 @@ const Navbar = () => {
               About
             </Link>
             <Link
-              to='/signup'
+              to='/auth'
               className='block text-gray-600 pl-4 hover:text-black'
             >
               Sign Up

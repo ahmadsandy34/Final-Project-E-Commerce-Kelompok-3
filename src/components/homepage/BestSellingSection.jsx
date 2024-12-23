@@ -48,7 +48,7 @@ const BestSellingSection = () => {
         <h2 className="text-sm lg:text-4xl font-semibold">
           Best Selling Products
         </h2>
-        <Link to="/best-selling">
+        <Link to="/best-selling" className="contents">
           <button className="text-[#DB4444] lg:text-white text-xs lg:text-base lg:font-medium lg:py-4 lg:px-12 bg-transparent lg:bg-[#DB4444] rounded-sm">
             View All
           </button>
@@ -57,7 +57,9 @@ const BestSellingSection = () => {
       <div className="mt-6 lg:mt-12">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {BestSellingProducts.map((product, index) => (
-            <ProductCard key={index} {...product} type={1} />
+            <Link to="/product/detail" className="contents" key={index}>
+              <ProductCard key={index} {...product} type={1} />
+            </Link>
           ))}
         </div>
       </div>

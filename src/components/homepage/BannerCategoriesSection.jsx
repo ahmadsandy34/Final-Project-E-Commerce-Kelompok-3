@@ -1,31 +1,42 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
+import BannerCategoriesCard from './BannerCategoriesCard'
 import Hero from "../../assets/home/hero.svg";
-import ArrowRight from "../../assets/home/arrowright.svg";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 
 const BannerCategoriesSection = () => {
+  const bannerData = [
+    {
+      title: "Enhance Your Music Experience",
+      image: Hero,
+    },
+    {
+      title: "Enhance Your Music Experience",
+      image: Hero,
+    },
+    {
+      title: "Enhance Your Music Experience",
+      image: Hero,
+    },
+  ];
   return (
-    <section className="lg:w-4/5 lg:mx-auto mt-20 bg-black text-white relative h-[200px] lg:h-[500px] flex items-center">
-      <div className="flex-1 pl-6 lg:pl-12">
-        <p className="text-xs lg:text-base font-semibold lg:text-[#00FF66] mb-4 lg:mb-16">
-          Categories
-        </p>
-        <h2 className="w-full lg:w-8/12 lg:text-5xl font-semibold mb-2 lg:mb-20">
-          Enhance Your Music Experience
-        </h2>
-        <button className="lg:bg-[#00FF66] text-xs lg:text-base lg:py-4 lg:px-12 lg:rounded-md underline underline-offset-8 lg:no-underline items-center flex gap-2 lg:gap-0">
-          Buy Now<span className="hidden lg:inline">!</span>{" "}
-          <img
-            src={ArrowRight}
-            alt="Arrow Right"
-            className="lg:hidden inline"
-          />
-        </button>
-      </div>
-      <div className="flex-1 flex justify-start">
-        <img src={Hero} alt="Hero" className="max-w-full max-h-full" />
-      </div>
-    </section>
+    <Swiper
+           modules={[Pagination, Autoplay]}
+           spaceBetween={10}
+           slidesPerView={1}
+           pagination={{ clickable: true }}
+           autoplay={{ delay: 3000, disableOnInteraction: false }}
+           loop={true}
+         >
+           {bannerData.map((item, index) => (
+             <SwiperSlide key={index}>
+               <BannerCategoriesCard {...item} />
+             </SwiperSlide>
+           ))}
+         </Swiper>
   );
 };
 
