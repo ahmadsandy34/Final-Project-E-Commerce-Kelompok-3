@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import BannerSection from "../components/homepage/BannerSection";
 import BannerCategoriesSection from "../components/homepage/BannerCategoriesSection";
 import CategoriesSection from "../components/homepage/CategoriesSection";
@@ -9,9 +9,16 @@ import RecommendedSection from "../components/homepage/RecommendedSection";
 import ServicesSection from "../components/homepage/ServicesSection";
 
 const Homepage = () => {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, []);
   return (
     <>
-      <main>
+      <main ref={ref}>
         <BannerSection />
         <CategoriesSection />
         <BestSellingSection />

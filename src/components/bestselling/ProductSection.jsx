@@ -1,9 +1,10 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { ProductCard } from "./ProductCard";
+import PropTypes from "prop-types";
 
-export const ProductSection = ({ title, products }) => {
+const ProductSection = ({ title, products }) => {
   const [visibleProducts, setVisibleProducts] = useState(6);
   const [showMoreButton, setShowMoreButton] = useState(true);
 
@@ -48,7 +49,6 @@ export const ProductSection = ({ title, products }) => {
       <div className="flex items-center gap-4 mb-12">
         <div className="w-5 h-10 bg-[#DB4444] rounded-sm"></div>
         <h2 className="text-2xl font-semibold">{title}</h2>
-        <span className="text-gray-500 ml-2">({products.length} items)</span>
       </div>
 
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
@@ -75,9 +75,7 @@ export const ProductSection = ({ title, products }) => {
 
 ProductSection.propTypes = {
   title: PropTypes.string.isRequired,
-  products: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-    })
-  ).isRequired,
+  products: PropTypes.array.isRequired,
 };
+
+export default ProductSection;

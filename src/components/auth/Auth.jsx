@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import side_image from '../../assets/auth/side_image.png';
 
@@ -9,6 +9,14 @@ const Auth = () => {
     email: '',
     password: '',
   });
+
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,7 +34,7 @@ const Auth = () => {
 
   return (
     <div className='min-h-screen bg-white'>
-      <div className='flex flex-col md:flex-row min-h-screen'>
+      <div className='flex flex-col md:flex-row min-h-screen' ref={ref}>
         {/* Image Section */}
         <div className='w-full md:w-1/2 bg-[#C1DBE3] relative'>
           <img src={side_image} alt='Shopping Cart' className='w-full h-full object-cover' />

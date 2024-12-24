@@ -7,7 +7,7 @@ const MyProfile = () => {
         Edit Your Profile
       </h1>
       <form className="mt-4 space-y-4">
-        <div className="grid md:grid-flow-col justify-stretch gap-x-12 space-y-3">
+        <div className="grid md:grid-flow-col justify-stretch gap-x-12">
           <div className="space-y-3">
             <label htmlFor="name">Full Name</label>
             <input

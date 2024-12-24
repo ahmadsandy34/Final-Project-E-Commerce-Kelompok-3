@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
+import { Link } from "react-router-dom";
 import ProductCard from "../../components/homepage/ProductCard";
 import Product from "../../assets/best_seling/product.png";
 import Right from "../../assets/home/right.svg";
@@ -88,26 +89,34 @@ const AllProductSection = () => {
             <img src={Right} alt="Right" />
           </button>
         </div>
-        <button className="lg:hidden text-[#DB4444] lg:text-white text-xs lg:text-base lg:font-medium lg:py-4 lg:px-12 bg-transparent lg:bg-[#DB4444] rounded-sm">
-          View All
-        </button>
+        <Link to="/products" className="contents">
+          <button className="lg:hidden text-[#DB4444] lg:text-white text-xs lg:text-base lg:font-medium lg:py-4 lg:px-12 bg-transparent lg:bg-[#DB4444] rounded-sm">
+            View All
+          </button>
+        </Link>
       </div>
       <div className="mt-6 lg:mt-12">
         <div className="hidden lg:grid grid-cols-4 gap-4">
           {AllProducts.map((product, index) => (
-            <ProductCard key={index} {...product} type={2} />
+            <Link to="/product/detail" className="contents" key={index}>
+              <ProductCard key={index} {...product} type={2} />
+            </Link>
           ))}
         </div>
         <div className="lg:hidden grid grid-cols-2 gap-4">
-          {AllProducts.map((product, index) => (
-            <ProductCard key={index} {...product} type={1} />
+          {AllProducts.slice(0, 4).map((product, index) => (
+            <Link to="/product/detail" className="contents" key={index}>
+              <ProductCard key={index} {...product} type={1} />
+            </Link>
           ))}
         </div>
       </div>
       <div className="hidden lg:flex justify-center mt-12">
-        <button className="bg-[#DB4444] text-white py-4 px-12 rounded-md">
-          View All Products
-        </button>
+        <Link to="/products" className="contents">
+          <button className="bg-[#DB4444] text-white py-4 px-12 rounded-md">
+            View All Products
+          </button>
+        </Link>
       </div>
     </section>
   );

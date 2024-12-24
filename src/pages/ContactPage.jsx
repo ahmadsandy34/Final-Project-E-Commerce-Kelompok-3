@@ -1,14 +1,21 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Phone from "../assets/contact/phone.svg";
 import Mail from "../assets/contact/mail.svg";
 
 const ContactPage = () => {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, []);
   return (
     <>
       <section className="lg:w-4/5 mx-auto">
 
-        <div className="w-4/5 mx-auto lg:w-full text-sm text-black mt-12">
+        <div className="w-4/5 mx-auto lg:w-full text-sm text-black mt-12" ref={ref}>
           <p className="opacity-50 inline">Home / </p>
           <p className="opacity-100 inline">Contact</p>
         </div>
