@@ -57,9 +57,9 @@ const BestSellingSection = () => {
       <div className="mt-6 lg:mt-12">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {BestSellingProducts.map((product, index) => (
-            <Link to="/product/detail" className="contents" key={index}>
+            <div className="contents" key={index}>
               <ProductCard key={index} {...product} type={1} />
-            </Link>
+            </div>
           ))}
         </div>
       </div>

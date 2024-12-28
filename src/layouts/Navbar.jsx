@@ -1,22 +1,38 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import Search from "../assets/navbar/search.svg";
+import Cart from "../assets/navbar/cart.svg";
+import Wishlist from "../assets/navbar/wishlist.svg";
+import User from "../assets/navbar/user.svg";
+import UserRed from "../assets/navbar/userred.svg";
+import UserDrop from "../assets/navbar/userdrop.svg";
+import Order from "../assets/navbar/order.svg";
+import Reviews from "../assets/navbar/reviews.svg";
+import Logout from "../assets/navbar/logout.svg";
 
-const Navbar = () => {
+const Navbar = ({ token }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [currentUserIcon, setCurrentUserIcon] = useState(User);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const handleClick = () => {
+    setCurrentUserIcon((prevIcon) => (prevIcon === User ? UserRed : User));
+    setIsDropdownOpen((prev) => !prev);
+  };
 
   return (
-    <div className='w-full'>
+    <div className="w-full">
       {/* Top Banner */}
-      <div className='w-full bg-black text-white py-2 px-4 text-center'>
-        <div className='flex justify-between items-center max-w-screen-xl mx-auto'>
-          <p className='text-sm text-center flex-1'>
-            Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!{' '}
-            <Link to='/best-selling' className='font-bold hover:underline'>
+      <div className="w-full bg-black text-white py-2 px-4 text-center">
+        <div className="flex justify-between items-center max-w-screen-xl mx-auto">
+          <p className="text-sm text-center flex-1">
+            Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!{" "}
+            <Link to="/best-selling" className="font-bold hover:underline">
               ShopNow
             </Link>
           </p>
           <div>
-            <select className='bg-black text-white text-sm focus:outline-none'>
+            <select className="bg-black text-white text-sm focus:outline-none">
               <option>English</option>
             </select>
           </div>
@@ -24,148 +40,271 @@ const Navbar = () => {
       </div>
 
       {/* Main Header */}
-      <div className='border-b'>
-        <div className='max-w-screen-xl mx-auto px-4'>
-          <div className='flex items-center justify-between h-16'>
+      <div className="border-b">
+        <div className="max-w-screen-xl mx-auto px-4">
+          <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <Link to='/' className='text-2xl font-bold text-black'>
+            <Link
+              to="/"
+              className="hidden lg:block text-2xl font-bold text-black"
+            >
               Exclusive
             </Link>
 
             {/* Desktop Navigation */}
-            <div className='hidden md:flex items-center space-x-6'>
-              <Link to='/' className='text-gray-700 hover:text-black'>
+            <div className="hidden md:flex items-center space-x-6">
+              <Link to="/" className="text-black hover:text-gray-500">
                 Home
               </Link>
-              <Link to='/contact' className='text-gray-700 hover:text-black'>
+              <Link to="/contact" className="text-black hover:text-gray-500">
                 Contact
               </Link>
-              <Link to='/about' className='text-gray-700 hover:text-black'>
+              <Link to="/about" className="text-black hover:text-gray-500">
                 About
               </Link>
-              <Link to='/auth' className='text-gray-700 hover:text-black'>
+              <Link to="/auth" className="text-black hover:text-gray-500">
                 Sign Up
               </Link>
             </div>
 
             {/* Search Bar (Desktop) */}
-            <div className='hidden md:block'>
-              <input
-                type='text'
-                placeholder='What are you looking for?'
-                className='border rounded-lg py-2 px-4 w-64'
-              />
+            <div className="hidden md:flex flex-row items-center">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="What are you looking for?"
+                  className="border rounded-lg py-2 px-4 w-64 bg-[#F5F5F5]"
+                />
+                <button
+                  type="submit"
+                  className="absolute inset-y-0 end-0 flex items-center pe-3"
+                >
+                  <img src={Search} alt="Search" className="w-5 h-5" />
+                </button>
+              </div>
+              <div className="flex items-center space-x-2 ms-2 relative">
+                <Link to="/wishlist">
+                  <img src={Wishlist} alt="Wishlist" className="w-7 h-7" />
+                </Link>
+                <Link to="/cart">
+                  <img src={Cart} alt="Cart" className="w-7 h-7" />
+                </Link>
+                {token && (
+                  <div className="relative">
+                    <img
+                      src={currentUserIcon}
+                      alt="User"
+                      className="w-7 h-7 cursor-pointer"
+                      onClick={handleClick}
+                    />
+                    {isDropdownOpen && (
+                      <div className="absolute right-0 mt-2 w-48 bg-gradient-to-t from-black via-black/80 to-black/60 backdrop-blur-xl text-white rounded-md z-10">
+                        <Link
+                          to="/my-account"
+                          className="block px-2 py-2 text-sm hover:bg-gray-700"
+                          onClick={handleClick}
+                        >
+                          <img
+                            src={UserDrop}
+                            alt="User"
+                            className="inline w-7 h-7 me-1"
+                          />{" "}
+                          Manage My Account
+                        </Link>
+                        <Link
+                          to="/my-account"
+                          className="block px-2 py-2 text-sm hover:bg-gray-700"
+                          onClick={handleClick}
+                        >
+                          <img
+                            src={Order}
+                            alt="Order"
+                            className="inline w-6 h-6 me-2"
+                          />{" "}
+                          My Order
+                        </Link>
+                        <Link
+                          to="#"
+                          className="block px-2 py-2 text-sm hover:bg-gray-700"
+                          onClick={handleClick}
+                        >
+                          <img
+                            src={Reviews}
+                            alt="Reviews"
+                            className="inline w-6 h-6 me-2"
+                          />{" "}
+                          My Reviews
+                        </Link>
+                        <button className="block w-full text-left px-2 py-2 text-sm hover:bg-gray-700">
+                          <img
+                            src={Logout}
+                            alt="Logout"
+                            className="inline w-6 h-6 me-2"
+                          />{" "}
+                          Logout
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* Mobile Menu Button */}
             <button
-              className='md:hidden p-2 text-gray-700'
+              className="md:hidden p-2 text-gray-700"
               onClick={() => setIsOpen(!isOpen)}
             >
               <svg
-                className='w-6 h-6'
-                fill='none'
-                stroke='currentColor'
-                viewBox='0 0 24 24'
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
               >
                 <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   strokeWidth={2}
-                  d='M4 6h16M4 12h16M4 18h16'
+                  d="M4 6h16M4 12h16M4 18h16"
                 />
               </svg>
             </button>
+
+            {/* Mobile Sidebar */}
+            <div
+              className={`fixed top-0 left-0 h-full w-full bg-white shadow-lg transform transition-transform duration-300 ease-in-out z-50 ${
+                isOpen ? "translate-x-0" : "-translate-x-full"
+              }`}
+            >
+              <div className="p-6">
+                {/* Header */}
+                <div className="flex items-center justify-between mb-6">
+                  <span className="text-xl font-bold text-black">
+                    Exclusive
+                  </span>
+                  <button
+                    onClick={() => setIsOpen(false)}
+                    className="text-gray-600 hover:bg-gray-100 p-2 rounded-full"
+                  >
+                    <svg
+                      className="w-6 h-6"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
+                </div>
+
+                {/* Search Input */}
+                <div className="mb-6 relative">
+                  <input
+                    type="text"
+                    placeholder="What are you looking for?"
+                    className="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none"
+                  />
+                  <button
+                    type="submit"
+                    className="absolute inset-y-0 end-0 flex items-center pe-3"
+                  >
+                    <img src={Search} alt="Search" className="w-5 h-5" />
+                  </button>
+                </div>
+
+                {/* Navigation Links */}
+                <nav
+                  className={`space-y-4 ${
+                    token ? "" : "border-b border-gray-400 pb-4"
+                  } `}
+                >
+                  <Link
+                    to="/"
+                    className="block text-red-500 font-medium border-l-4 border-red-500 pl-4"
+                  >
+                    Home
+                  </Link>
+                  <Link
+                    to="/contact"
+                    className="block text-gray-600 pl-4 hover:text-black"
+                  >
+                    Contact
+                  </Link>
+                  <Link
+                    to="/about"
+                    className="block text-gray-600 pl-4 hover:text-black"
+                  >
+                    About
+                  </Link>
+                  <Link
+                    to="/auth"
+                    className="block text-gray-600 pl-4 hover:text-black"
+                  >
+                    Sign Up
+                  </Link>
+                </nav>
+              </div>
+
+              {/* Profile Section */}
+              {token && (
+                <>
+                  <div className="absolute bottom-6 left-6 flex items-center space-x-4">
+                    <img
+                      src="https://via.placeholder.com/40"
+                      alt="User"
+                      className="w-10 h-10 rounded-full"
+                    />
+                    <span className="text-gray-800">Andre Gunawan</span>
+                  </div>
+                  <div className="absolute bottom-3 left-3 w-11/12 mx-auto">
+                    <div className="h-[1px] bg-gray-400"></div>
+                  </div>
+                </>
+              )}
+
+              {!token && (
+                <div className="absolute bottom-6 right-6 flex items-center">
+                  <div className="flex gap-x-3">
+                    <Link
+                      to="/auth"
+                      className="border border-red-500 rounded-md px-10 py-2 text-red-500 font-medium"
+                    >
+                      Sign Up
+                    </Link>
+                    <Link
+                      to="/auth"
+                      className="bg-red-500 border border-red-500 rounded-md px-10 py-2 text-white font-medium"
+                    >
+                      Login
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Overlay */}
+            {isOpen && (
+              <div
+                className="fixed inset-0 bg-black bg-opacity-50 z-40"
+                onClick={() => setIsOpen(false)}
+              ></div>
+            )}
+
+            <Link to="/" className="lg:hidden text-2xl font-bold text-black">
+              Exclusive
+            </Link>
+
+            <Link to="/cart" className="lg:hidden">
+              <img src={Cart} alt="Cart" className="w-7 h-7" />
+            </Link>
           </div>
         </div>
       </div>
-
-      {/* Mobile Sidebar */}
-      <div
-        className={`fixed top-0 left-0 h-full w-full bg-white shadow-lg transform transition-transform duration-300 ease-in-out z-50 ${
-          isOpen ? 'translate-x-0' : '-translate-x-full'
-        }`}
-      >
-        <div className='p-6'>
-          {/* Header */}
-          <div className='flex items-center justify-between mb-6'>
-            <span className='text-xl font-bold text-black'>Exclusive</span>
-            <button
-              onClick={() => setIsOpen(false)}
-              className='text-gray-600 hover:bg-gray-100 p-2 rounded-full'
-            >
-              <svg
-                className='w-6 h-6'
-                fill='none'
-                stroke='currentColor'
-                viewBox='0 0 24 24'
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  strokeWidth={2}
-                  d='M6 18L18 6M6 6l12 12'
-                />
-              </svg>
-            </button>
-          </div>
-
-          {/* Search Input */}
-          <div className='mb-6'>
-            <input
-              type='text'
-              placeholder='What are you looking for?'
-              className='w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none'
-            />
-          </div>
-
-          {/* Navigation Links */}
-          <nav className='space-y-4'>
-            <Link
-              to='/'
-              className='block text-red-500 font-medium border-l-4 border-red-500 pl-4'
-            >
-              Home
-            </Link>
-            <Link
-              to='/contact'
-              className='block text-gray-600 pl-4 hover:text-black'
-            >
-              Contact
-            </Link>
-            <Link
-              to='/about'
-              className='block text-gray-600 pl-4 hover:text-black'
-            >
-              About
-            </Link>
-            <Link
-              to='/auth'
-              className='block text-gray-600 pl-4 hover:text-black'
-            >
-              Sign Up
-            </Link>
-          </nav>
-        </div>
-
-        {/* Profile Section */}
-        <div className='absolute bottom-6 left-6 flex items-center space-x-4'>
-          <img
-            src='https://via.placeholder.com/40'
-            alt='User'
-            className='w-10 h-10 rounded-full'
-          />
-          <span className='text-gray-800'>Andre Gunawan</span>
-        </div>
-      </div>
-
-      {/* Overlay */}
-      {isOpen && (
-        <div
-          className='fixed inset-0 bg-black bg-opacity-50 z-40'
-          onClick={() => setIsOpen(false)}
-        ></div>
-      )}
     </div>
   );
 };

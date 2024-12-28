@@ -31,7 +31,7 @@ const TeamSection = () => {
           <TeamMember key={index} {...member} />
         ))}
       </div>
-      {/* Slider dots for mobile */}
+      
       <div className='flex justify-center gap-2 mt-6'>
         {[1, 2, 3, 4, 5].map((_, i) => (
           <div key={i} className={`w-2 h-2 rounded-full ${i === 2 ? 'bg-[#DB4444]' : 'bg-gray-300'}`} />

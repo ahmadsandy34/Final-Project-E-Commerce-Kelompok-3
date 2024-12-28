@@ -53,9 +53,9 @@ const ProductSection = ({ title, products }) => {
 
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
         {displayedProducts.map((product) => (
-          <Link to={`/product/detail`} key={product.id}>
+          <div key={product.id}>
             <ProductCard key={product.id} {...product} type={1} />
-          </Link>
+          </div>
         ))}
       </div>
 

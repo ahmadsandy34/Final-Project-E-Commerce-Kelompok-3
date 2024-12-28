@@ -49,7 +49,7 @@ const RecommendedSection = () => {
               <p className="w-3/4 text-sm mb-4">
                 Black and White version of the PS5 coming out on sale.
               </p>
-              <button className="underline underline-offset-4">Shop Now</button>
+              <button className="hover:underline underline-offset-4">Shop Now</button>
             </div>
           </div>
         </Link>
@@ -64,7 +64,7 @@ const RecommendedSection = () => {
                 <p className="w-3/4 text-sm mb-4">
                   Featured woman collections that give you another vibe.
                 </p>
-                <button className="underline underline-offset-4">
+                <button className="hover:underline underline-offset-4">
                   Shop Now
                 </button>
               </div>
@@ -77,7 +77,7 @@ const RecommendedSection = () => {
                 <div className="absolute bottom-3 left-3 pl-4 pb-4 text-white">
                   <p className="text-2xl font-semibold mb-2">Speakers</p>
                   <p className="text-sm mb-4">Amazon wireless speakers</p>
-                  <button className="underline underline-offset-4">
+                  <button className="hover:underline underline-offset-4">
                     Shop Now
                   </button>
                 </div>
@@ -89,7 +89,7 @@ const RecommendedSection = () => {
                 <div className="absolute bottom-3 left-3 pl-4 pb-4 text-white">
                   <p className="text-2xl font-semibold mb-2">Perfume</p>
                   <p className="text-sm mb-4">GUCCI INTENSE OUD EDP</p>
-                  <button className="underline underline-offset-4">
+                  <button className="hover:underline underline-offset-4">
                     Shop Now
                   </button>
                 </div>

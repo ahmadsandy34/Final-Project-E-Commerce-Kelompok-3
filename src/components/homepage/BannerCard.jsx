@@ -19,7 +19,7 @@ const BannerCard = ({ logo, title, desc, image, type }) => {
             </div>
             <div className="mt-12">
               <Link to="/product/detail" className="contents">
-                <button className="flex flex-row gap-2 items-center font-medium underline underline-offset-8">
+                <button className="flex flex-row gap-2 items-center font-medium hover:underline underline-offset-8">
                   Shop Now <img src={ArrowRight} alt="Arrow Right" />
                 </button>
               </Link>
@@ -41,7 +41,7 @@ const BannerCard = ({ logo, title, desc, image, type }) => {
             <div className="flex flex-col justify-center items-start pl-6">
               <p className="font-semibold mb-4">{desc}</p>
               <Link to="/product/detail" className="contents">
-                <button className="flex flex-row gap-2 items-center font-medium text-xs underline underline-offset-8">
+                <button className="flex flex-row gap-2 items-center font-medium text-xs hover:underline underline-offset-8">
                   Shop Now <img src={ArrowRight} alt="Arrow Right" />
                 </button>
               </Link>
