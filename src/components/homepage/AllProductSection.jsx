@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import ProductCard from "../../components/homepage/ProductCard";
 import Product from "../../assets/best_seling/product.png";
@@ -70,7 +69,44 @@ const AllProductSection = () => {
       reviews: 65,
       image: Product,
     },
+    {
+      title: "ASUS FHD Gaming Laptop",
+      price: 960,
+      originalPrice: 1160,
+      rating: 5,
+      reviews: 65,
+      discount: 35,
+      image: Product,
+    },
+    {
+      title: "IPS LCD Gaming Monitor",
+      price: 1160,
+      rating: 4.5,
+      reviews: 65,
+      image: Product,
+    },
   ];
+
+  const [currentPage, setCurrentPage] = useState(1); 
+  const itemsPerPage = 8;
+
+  const handleNext = () => {
+    if (currentPage < Math.ceil(AllProducts.length / itemsPerPage)) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePrev = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const displayedProducts = AllProducts.slice(
+    (currentPage - 1) * itemsPerPage, 
+    currentPage * itemsPerPage
+  );
+
   return (
     <section className="w-4/5 mx-auto mt-4 lg:mt-20">
       <div className="hidden lg:flex items-center gap-2">
@@ -78,14 +114,20 @@ const AllProductSection = () => {
         <p className="text-[#DB4444] font-semibold">Our Product</p>
       </div>
       <div className="flex justify-between items-center mt-4">
-        <h2 className="text-sm lg:text-4xl font-semibold">
-          Explore Our Products
-        </h2>
+        <h2 className="text-sm lg:text-4xl font-semibold">Explore Our Products</h2>
         <div className="hidden lg:flex gap-2">
-          <button className="rounded-full bg-gray-100 p-2">
+          <button
+            onClick={handlePrev}
+            disabled={currentPage === 1} 
+            className="rounded-full bg-gray-100 p-2 disabled:opacity-30"
+          >
             <img src={Left} alt="Left" />
           </button>
-          <button className="rounded-full bg-gray-100 p-2">
+          <button
+            onClick={handleNext}
+            disabled={currentPage === Math.ceil(AllProducts.length / itemsPerPage)} 
+            className="rounded-full bg-gray-100 p-2 disabled:opacity-30"
+          >
             <img src={Right} alt="Right" />
           </button>
         </div>
@@ -97,17 +139,17 @@ const AllProductSection = () => {
       </div>
       <div className="mt-6 lg:mt-12">
         <div className="hidden lg:grid grid-cols-4 gap-4">
-          {AllProducts.map((product, index) => (
-            <Link to="/product/detail" className="contents" key={index}>
+          {displayedProducts.map((product, index) => (
+            <div className="contents" key={index}>
               <ProductCard key={index} {...product} type={2} />
-            </Link>
+            </div>
           ))}
         </div>
         <div className="lg:hidden grid grid-cols-2 gap-4">
-          {AllProducts.slice(0, 4).map((product, index) => (
-            <Link to="/product/detail" className="contents" key={index}>
+          {displayedProducts.slice(0, 4).map((product, index) => (
+            <div className="contents" key={index}>
               <ProductCard key={index} {...product} type={1} />
-            </Link>
+            </div>
           ))}
         </div>
       </div>

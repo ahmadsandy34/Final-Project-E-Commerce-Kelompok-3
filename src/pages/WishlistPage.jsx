@@ -61,9 +61,9 @@ const WishlistPage = () => {
       {/* Updated grid classes for 2 columns on mobile */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
         {wishlistItems.map((item, index) => (
-          <Link to={`/product/detail`} key={index} className="contents">
+          <div key={index} className="contents">
             <WishlistCard key={index} {...item} type={1} />
-          </Link>
+          </div>
         ))}
       </div>
 

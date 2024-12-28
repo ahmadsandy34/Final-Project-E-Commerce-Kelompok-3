@@ -16,7 +16,6 @@ const StatsSection = () => {
     {
       number: '33k',
       text: 'Monthly Product Sale',
-      highlighted: true,
       image: Sale
     },
     {
@@ -39,7 +38,6 @@ const StatsSection = () => {
             key={index}
             number={stat.number}
             text={stat.text}
-            highlighted={stat.highlighted}
             image={stat.image}
           />
         ))}

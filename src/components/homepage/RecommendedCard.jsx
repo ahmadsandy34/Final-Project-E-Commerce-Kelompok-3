@@ -11,7 +11,7 @@ const RecommendedCard = ({image, title, description}) => {
         <p className="text-[8px] mb-3">
           {description}
         </p>
-        <button className="text-[8px] underline underline-offset-4">
+        <button className="text-[8px] hover:underline underline-offset-4">
           Shop Now
         </button>
       </div>

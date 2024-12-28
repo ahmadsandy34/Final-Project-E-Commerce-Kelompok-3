@@ -78,19 +78,19 @@ const Footer = () => {
           <div className="basis-2/3 order-5 lg:order-none">
             <p className="text-xl font-medium mb-5">Account</p>
             <Link to="/my-account" className="contents">
-              <p className="mb-4">My Account</p>
+              <p className="mb-4 hover:text-gray-400">My Account</p>
             </Link>
             <Link to="/auth" className="contents">
-              <p className="mb-4">Login / Register</p>
+              <p className="mb-4 hover:text-gray-400">Login / Register</p>
             </Link>
             <Link to="/cart" className="contents">
-              <p className="mb-4">Cart</p>
+              <p className="mb-4 hover:text-gray-400">Cart</p>
             </Link>
             <Link to="/wishlist" className="contents">
-              <p className="mb-4">Wishlist</p>
+              <p className="mb-4 hover:text-gray-400">Wishlist</p>
             </Link>
             <Link to="/products" className="contents">
-              <p className="mb-4">Shop</p>
+              <p className="mb-4 hover:text-gray-400">Shop</p>
             </Link>
           </div>
 

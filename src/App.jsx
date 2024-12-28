@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ErrorPage from './pages/ErrorPage';
 import Footer from './layouts/Footer';
@@ -18,10 +18,11 @@ import CheckoutStatusPage from './pages/CheckoutStatusPage';
 import BillingPage from './pages/BillingPage';
 
 const App = () => {
+  const [token, setToken] = useState("a");
   return (
     <>
       <BrowserRouter>
-        <Navbar />
+        <Navbar token={token} />
         <Routes>
           <Route path='/' element={<Homepage />} />
           <Route path='/auth' element={<AuthPage />} />

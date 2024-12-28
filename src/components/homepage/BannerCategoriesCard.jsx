@@ -15,7 +15,7 @@ const BannerCategoriesCard = ({ title, image }) => {
         {title}
       </h2>
       <Link to="/products/category/:category" className="contents">
-      <button className="lg:bg-[#00FF66] text-xs lg:text-base lg:py-4 lg:px-12 lg:rounded-md underline underline-offset-8 lg:no-underline items-center flex gap-2 lg:gap-0">
+      <button className="lg:bg-[#00FF66] text-xs lg:text-base lg:py-4 lg:px-12 lg:rounded-md hover:underline underline-offset-8 lg:no-underline items-center flex gap-2 lg:gap-0">
         Buy Now<span className="hidden lg:inline">!</span>{" "}
         <img
           src={ArrowRight}
