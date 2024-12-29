@@ -1,49 +1,49 @@
 import React from "react";
-import Breadcrumb from "../components/about/Breadcrumb";
+import { useLocation } from "react-router-dom";
+import Breadcrumb from "../components/checkout/Breadcrumb";
 import AddressBookCard from "../components/profile/AddressBookCard";
-import { useNavigate } from "react-router-dom";
 import ShippingCard from "../components/checkout/ShippingCard";
 import InvoiceCard from "../components/checkout/InvoiceCard";
+import SEO from "../components/SEO";
 
 const BillingPage = () => {
-  const navigate = useNavigate();
-  const handleClick = (component, isEdit) => {
-    navigate("/my-account");
-  };
+  const location = useLocation();
+  const { cart, total } = location.state || { cart: [], total: 0 };
+
   return (
-    <div className="max-w-screen-xl mx-auto py-4">
-      <Breadcrumb />
-      <div className="px-4 space-y-10">
-        <h1 className="text-4xl font-medium">Billing Details</h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-16">
-          <div className="space-y-6">
-            <div className="space-y-4">
-              <h2 className="text-xl text-[#DB4444] font-medium">
-                Your Address
-              </h2>
-              <AddressBookCard handleClick={handleClick} path="billing" />
+    <>
+      <SEO
+        title="Billing Details - Exclusive"
+        description="Review and confirm your billing details for a seamless checkout experience on Exclusive."
+        keywords="billing details, checkout, invoice, exclusive store"
+        robots="noindex, nofollow"
+      />
+      <div className="max-w-screen-xl mx-auto py-4">
+        <Breadcrumb />
+        <div className="px-4 space-y-10">
+          <h1 className="text-4xl font-medium">Billing Details</h1>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-16">
+            <div className="space-y-6">
+              <div className="space-y-4">
+                <h2 className="text-xl text-[#DB4444] font-medium">
+                  Your Address
+                </h2>
+                <AddressBookCard />
+              </div>
+              <div className="space-y-4">
+                <h2 className="text-xl text-[#DB4444] font-medium">
+                  Your Shipping
+                </h2>
+                <ShippingCard />
+              </div>
             </div>
-            <div className="space-y-4">
-              <h2 className="text-xl text-[#DB4444] font-medium">
-                Your Shipping
-              </h2>
-              <ShippingCard />
+            <div className="mt-10 sm:mt-0">
+              <InvoiceCard cart={cart} total={total} />
             </div>
-            <div className="space-y-4">
-              <h2 className="text-xl text-[#DB4444] font-medium">Your Note</h2>
-              <input
-                type="text"
-                className="w-full border border-black rounded p-2"
-                placeholder="Message for Sellers"
-              />
-            </div>
-          </div>
-          <div className="mt-10 sm:mt-0">
-            <InvoiceCard />
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

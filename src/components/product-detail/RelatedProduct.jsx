@@ -1,6 +1,42 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import LoveIcon from "../../assets/product-detail/LoveIcon";
+import Gamepad from "../../assets/best_seling/gamepad.svg";
+import Keyboard from "../../assets/best_seling/keyboard.svg";
+import Cooler from "../../assets/best_seling/cooler.svg";
+import Monitor from "../../assets/best_seling/monitor.svg";
+
+const renderStars = (rating) => {
+  const fullStars = Math.floor(rating);
+  const hasHalfStar = rating % 1 !== 0;
+  const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+
+  const stars = [];
+
+  for (let i = 0; i < fullStars; i++) {
+    stars.push(
+      <i
+        key={`full-${i}`}
+        className="bi bi-star-fill text-yellow-400 me-1"
+      ></i>
+    );
+  }
+
+  if (hasHalfStar) {
+    stars.push(
+      <i key="half" className="bi bi-star-half text-yellow-400 me-1"></i>
+    );
+  }
+
+  for (let i = 0; i < emptyStars; i++) {
+    stars.push(
+      <i key={`empty-${i}`} className="bi bi-star text-yellow-400 me-1"></i>
+    );
+  }
+
+  return stars;
+};
 
 const ProductCard = ({ item }) => {
   return (
@@ -41,13 +77,7 @@ const ProductCard = ({ item }) => {
           )}
         </div>
         <div className="flex items-center gap-2">
-          <div className="flex">
-            {"★★★★★".split("").map((star, i) => (
-              <span key={i} className="text-yellow-400 text-sm">
-                {star}
-              </span>
-            ))}
-          </div>
+          <div className="flex">{renderStars(item.rating)}</div>
           <span className="text-gray-500 text-sm">({item.reviews})</span>
         </div>
       </div>
@@ -55,37 +85,55 @@ const ProductCard = ({ item }) => {
   );
 };
 
+ProductCard.propTypes = {
+  item: PropTypes.shape({
+    image: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    discount: PropTypes.number,
+    isNew: PropTypes.bool,
+    price: PropTypes.number.isRequired,
+    originalPrice: PropTypes.number,
+    rating: PropTypes.number.isRequired,
+    reviews: PropTypes.number.isRequired,
+  }).isRequired,
+};
+
 const RelatedProduct = () => {
   const products = [
     {
-      title: "Gucci duffle bag",
+      title: "Havit HV-G92 Gamepad",
+      price: 120,
+      originalPrice: 160,
+      rating: 5,
+      reviews: 88,
+      discount: 40,
+      image: Gamepad,
+    },
+    {
+      title: "AK-900 Wired Keyboard",
       price: 960,
       originalPrice: 1160,
-      rating: 5,
-      reviews: 65,
+      rating: 4,
+      reviews: 75,
       discount: 35,
-      image: "https://picsum.photos/300/300",
+      image: Keyboard,
+    },
+    {
+      title: "IPS LCD Gaming Monitor",
+      price: 370,
+      originalPrice: 400,
+      rating: 5,
+      reviews: 99,
+      discount: 30,
+      image: Monitor,
     },
     {
       title: "RGB liquid CPU Cooler",
-      price: 1960,
-      rating: 5,
+      price: 160,
+      originalPrice: 170,
+      rating: 4.5,
       reviews: 65,
-      image: "https://picsum.photos/300/300",
-    },
-    {
-      title: "GP11 Shooter USB Gamepad",
-      price: 550,
-      rating: 5,
-      reviews: 65,
-      image: "https://picsum.photos/300/300",
-    },
-    {
-      title: "Quilted Satin Jacket",
-      price: 100,
-      rating: 5,
-      reviews: 65,
-      image: "https://picsum.photos/300/300",
+      image: Cooler,
     },
   ];
   return (

@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import BannerCategoriesCard from "./BannerCategoriesCard";
-import Hero from "../../assets/home/hero.svg";
+import Boombox from "../../assets/home/boombox.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -11,15 +11,15 @@ const BannerCategoriesSection = () => {
   const bannerData = [
     {
       title: "Enhance Your Music Experience",
-      image: Hero,
+      image: Boombox,
     },
     {
       title: "Enhance Your Music Experience",
-      image: Hero,
+      image: Boombox,
     },
     {
       title: "Enhance Your Music Experience",
-      image: Hero,
+      image: Boombox,
     },
   ];
   return (

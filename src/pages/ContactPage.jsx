@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from "react";
 import Phone from "../assets/contact/phone.svg";
 import Mail from "../assets/contact/mail.svg";
+import SEO from "../components/SEO";
 
 const ContactPage = () => {
   const ref = useRef(null);
@@ -13,9 +14,17 @@ const ContactPage = () => {
   }, []);
   return (
     <>
+      <SEO
+        title="Contact Us - Exclusive"
+        description="Get in touch with Exclusive. We're here to help with any questions or support you need."
+        keywords="contact, support, exclusive, customer service, contact us"
+        robots="index, follow"
+      />
       <section className="lg:w-4/5 mx-auto">
-
-        <div className="w-4/5 mx-auto lg:w-full text-sm text-black mt-12" ref={ref}>
+        <div
+          className="w-4/5 mx-auto lg:w-full text-sm text-black mt-12"
+          ref={ref}
+        >
           <p className="opacity-50 inline">Home / </p>
           <p className="opacity-100 inline">Contact</p>
         </div>
@@ -87,7 +96,6 @@ const ContactPage = () => {
             </form>
           </div>
         </div>
-
       </section>
     </>
   );

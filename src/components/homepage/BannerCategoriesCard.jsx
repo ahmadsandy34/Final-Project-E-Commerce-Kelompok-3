@@ -14,7 +14,7 @@ const BannerCategoriesCard = ({ title, image }) => {
       <h2 className="w-full lg:w-8/12 lg:text-5xl font-semibold mb-2 lg:mb-20">
         {title}
       </h2>
-      <Link to="/products/category/:category" className="contents">
+      <Link to="/products/category/electronics" className="contents">
       <button className="lg:bg-[#00FF66] text-xs lg:text-base lg:py-4 lg:px-12 lg:rounded-md hover:underline underline-offset-8 lg:no-underline items-center flex gap-2 lg:gap-0">
         Buy Now<span className="hidden lg:inline">!</span>{" "}
         <img
