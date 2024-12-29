@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Search from "../assets/navbar/search.svg";
 import Cart from "../assets/navbar/cart.svg";
 import Wishlist from "../assets/navbar/wishlist.svg";
+import UserPic from "../assets/navbar/userpic.svg";
 import User from "../assets/navbar/user.svg";
 import UserRed from "../assets/navbar/userred.svg";
 import UserDrop from "../assets/navbar/userdrop.svg";
@@ -255,9 +256,9 @@ const Navbar = ({ token }) => {
                 <>
                   <div className="absolute bottom-6 left-6 flex items-center space-x-4">
                     <img
-                      src="https://via.placeholder.com/40"
+                      src={UserPic}
                       alt="User"
-                      className="w-10 h-10 rounded-full"
+                      className="w-12 h-12 rounded-full"
                     />
                     <span className="text-gray-800">Andre Gunawan</span>
                   </div>

@@ -13,6 +13,7 @@ const MyProfile = () => {
             <input
               type="text"
               id="name"
+              placeholder="Deni Irawan"
               className="w-full bg-gray-100 text-gray-500 rounded-md p-2"
             />
           </div>
@@ -21,6 +22,7 @@ const MyProfile = () => {
             <input
               type="email"
               id="email2"
+              placeholder="deni@lumoshive.com"
               className="w-full bg-gray-100 text-gray-500 rounded-md p-2"
             />
           </div>

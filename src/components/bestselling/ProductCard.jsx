@@ -57,19 +57,17 @@ export const ProductCard = ({
             src={image}
             alt={title}
             className="w-full h-full object-contain bg-gray-100"
-          />{" "}
+          />
           {isNew && (
             <span className="absolute top-3 left-3 bg-[#00FF66] text-white text-xs px-2 py-0.5 rounded">
-              {" "}
-              NEW{" "}
+              NEW
             </span>
-          )}{" "}
+          )}
           {discount && (
             <span className="absolute top-3 right-3 bg-[#DB4444] text-white text-xs px-2 py-0.5 rounded">
-              {" "}
-              -{discount}%{" "}
+              -{discount}%
             </span>
-          )}{" "}
+          )}
         </Link>
 
         <div className="absolute bottom-0 left-0 right-0 bg-black text-white py-2 text-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-full group-hover:translate-y-0">

@@ -1,6 +1,11 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
+import Havic1 from "../../assets/product-detail/havic1.svg";
+import Havic2 from "../../assets/product-detail/havic2.svg";
+import Havic3 from "../../assets/product-detail/havic3.svg";
+import Havic4 from "../../assets/product-detail/havic4.svg";
+import Havic5 from "../../assets/product-detail/havic5.svg";
 
 // Import Swiper styles
 import "swiper/css";
@@ -8,11 +13,11 @@ import "swiper/css/pagination";
 
 const GalleryProduct = () => {
   const images = [
-    "https://picsum.photos/730/480",
-    "https://picsum.photos/170/130",
-    "https://picsum.photos/170/130",
-    "https://picsum.photos/170/130",
-    "https://picsum.photos/170/130",
+    Havic1,
+    Havic2,
+    Havic3,
+    Havic4,
+    Havic5,
   ];
 
   return (

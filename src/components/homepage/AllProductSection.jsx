@@ -1,90 +1,75 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import ProductCard from "../../components/homepage/ProductCard";
-import Product from "../../assets/best_seling/product.png";
 import Right from "../../assets/home/right.svg";
 import Left from "../../assets/home/left.svg";
+import DogFood from "../../assets/home/dogfood.svg";
+import Cameras from "../../assets/home/cameras.svg";
+import Laptop from "../../assets/home/laptop.svg";
+import Curology from "../../assets/home/curology.svg";
+import Car from "../../assets/home/car.svg";
+import Shoes from "../../assets/home/shoes.svg";
+import Controller from "../../assets/home/controller.svg";
+import Jacket from "../../assets/home/jacket.svg";
 
 const AllProductSection = () => {
   const AllProducts = [
     {
-      title: "ASUS FHD Gaming Laptop",
-      price: 960,
-      originalPrice: 1160,
-      rating: 5,
-      reviews: 65,
-      discount: 35,
-      image: Product,
+      title: "Breed Dry Dog Food",
+      price: 100,
+      rating: 3,
+      reviews: 35,
+      image: DogFood,
     },
     {
-      title: "IPS LCD Gaming Monitor",
-      price: 1160,
-      rating: 4.5,
-      reviews: 65,
-      image: Product,
-    },
-    {
-      title: "HAVIT HV-G92 Gamepad",
-      price: 560,
+      title: "CANON EOS DSLR Camera",
+      price: 360,
       rating: 4,
-      reviews: 65,
-      isNew: true,
-      image: Product,
-    },
-    {
-      title: "AK-900 Wired Keyboard",
-      price: 200,
-      rating: 4.5,
-      reviews: 65,
-      image: Product,
+      reviews: 95,
+      image: Cameras,
     },
     {
       title: "ASUS FHD Gaming Laptop",
-      price: 960,
-      originalPrice: 1160,
+      price: 700,
       rating: 5,
-      reviews: 65,
-      discount: 35,
-      image: Product,
+      reviews: 325,
+      image: Laptop,
     },
     {
-      title: "IPS LCD Gaming Monitor",
-      price: 1160,
-      rating: 4.5,
-      reviews: 65,
-      image: Product,
-    },
-    {
-      title: "HAVIT HV-G92 Gamepad",
-      price: 560,
+      title: "Curology Product Set ",
+      price: 500,
       rating: 4,
-      reviews: 65,
-      isNew: true,
-      image: Product,
+      reviews: 145,
+      image: Curology,
     },
     {
-      title: "AK-900 Wired Keyboard",
-      price: 200,
-      rating: 4.5,
-      reviews: 65,
-      image: Product,
-    },
-    {
-      title: "ASUS FHD Gaming Laptop",
+      title: "Kids Electric Car",
       price: 960,
-      originalPrice: 1160,
       rating: 5,
       reviews: 65,
-      discount: 35,
-      image: Product,
+      image: Car,
     },
     {
-      title: "IPS LCD Gaming Monitor",
+      title: "Jr. Zoom Soccer Cleats",
       price: 1160,
-      rating: 4.5,
-      reviews: 65,
-      image: Product,
+      rating: 5,
+      reviews: 35,
+      image: Shoes,
     },
+    {
+      title: "GP11 Shooter USB Gamepad",
+      price: 660,
+      rating: 4.5,
+      reviews: 55,
+      image: Controller,
+    },
+    {
+      title: "Quilted Satin Jacket",
+      price: 660,
+      rating: 4.5,
+      reviews: 55,
+      image: Jacket,
+    }
   ];
 
   const [currentPage, setCurrentPage] = useState(1); 

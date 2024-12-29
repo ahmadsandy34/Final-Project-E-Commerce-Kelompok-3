@@ -4,19 +4,20 @@ import Right from "../../assets/home/right.svg";
 import Left from "../../assets/home/left.svg";
 import CategoryCard from "../../components/homepage/CategoryCard";
 import Phone from "../../assets/home/phone.svg";
+import Computer from "../../assets/home/computer.svg";
+import SmartWatch from "../../assets/home/smartwatch.svg";
+import Camera from "../../assets/home/camera.svg";
+import Headphones from "../../assets/home/headphone.svg";
+import Gaming from "../../assets/home/gamepad.svg";
 
 const CategoriesSection = () => {
   const categories = [
     { title: "Phones", image: Phone },
-    { title: "Laptops", image: Phone },
-    { title: "Tablets", image: Phone },
-    { title: "Smart Watches", image: Phone },
-    { title: "Headphones", image: Phone },
-    { title: "Accessories", image: Phone },
-    { title: "Cameras", image: Phone },
-    { title: "Gaming Consoles", image: Phone },
-    { title: "Speakers", image: Phone },
-    { title: "Monitors", image: Phone },
+    { title: "Computers", image: Computer },
+    { title: "SmartWatch", image: SmartWatch },
+    { title: "Camera", image: Camera },
+    { title: "Headphones", image: Headphones },
+    { title: "Gaming", image: Gaming },
   ];
 
   const [currentPage, setCurrentPage] = useState(1); 
@@ -68,7 +69,7 @@ const CategoriesSection = () => {
       </div>
       <div className="flex flex-row overflow-x-auto lg:grid lg:grid-cols-6 gap-4 mt-4 lg:mt-8">
         {displayedCategories.map((category, index) => (
-          <Link to="/products/category/:category" key={index} className="contents">
+          <Link to="/products/category/electronics" key={index} className="contents">
             <CategoryCard {...category} />
           </Link>
         ))}
