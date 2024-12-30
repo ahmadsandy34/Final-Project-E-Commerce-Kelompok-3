@@ -1,17 +1,51 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import DOMPurify from 'dompurify';
 import Phone from "../assets/contact/phone.svg";
 import Mail from "../assets/contact/mail.svg";
 import SEO from "../components/SEO";
 
 const ContactPage = () => {
   const ref = useRef(null);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
 
   useEffect(() => {
     if (ref.current) {
       ref.current.scrollIntoView({ behavior: "smooth" });
     }
   }, []);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    // Sanitize input value using DOMPurify
+    const sanitizedValue = DOMPurify.sanitize(value);
+    setFormData(prev => ({
+      ...prev,
+      [name]: sanitizedValue
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    // Sanitize all form data before submission
+    const sanitizedData = {
+      name: DOMPurify.sanitize(formData.name),
+      email: DOMPurify.sanitize(formData.email),
+      phone: DOMPurify.sanitize(formData.phone),
+      message: DOMPurify.sanitize(formData.message)
+    };
+
+    // Here you can handle the form submission with sanitized data
+    console.log('Sanitized form data:', sanitizedData);
+    // Add your form submission logic here
+  };
+
   return (
     <>
       <SEO
@@ -53,11 +87,13 @@ const ContactPage = () => {
           </div>
 
           <div className="flex flex-col basis-3/4 p-4 rounded-sm shadow-custom-light w-5/6 mx-auto">
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 lg:grid-cols-3 items-center gap-4 mt-2">
                 <input
                   type="text"
                   name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
                   placeholder="Your Name *"
                   className="bg-[#F5F5F5] py-3 px-4 rounded-md"
                   required
@@ -65,6 +101,8 @@ const ContactPage = () => {
                 <input
                   type="email"
                   name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
                   placeholder="Your Email *"
                   className="bg-[#F5F5F5] py-3 px-4 rounded-md"
                   required
@@ -72,14 +110,18 @@ const ContactPage = () => {
                 <input
                   type="number"
                   name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
                   placeholder="Your Phone *"
-                  className="bg-[#F5F5F5] py-3 px-4 rounded-md "
+                  className="bg-[#F5F5F5] py-3 px-4 rounded-md"
                   required
                 />
               </div>
               <div className="grid grid-cols-1 items-center gap-4 mt-8">
                 <textarea
                   name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
                   rows="6"
                   placeholder="Your Message"
                   className="bg-[#F5F5F5] py-3 px-4 rounded-md resize-none"

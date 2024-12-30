@@ -2,6 +2,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/slice/cartSlice";
 
 const ProductCard = ({
   title,
@@ -14,6 +16,14 @@ const ProductCard = ({
   image,
   type,
 }) => {
+
+
+  const dispatch = useDispatch()
+
+  const handleAddToCart = () => {
+    dispatch(addToCart())
+  } 
+
   // Function to render stars based on rating
   const renderStars = (rating) => {
     const fullStars = Math.floor(rating);
@@ -71,7 +81,7 @@ const ProductCard = ({
         </Link>
 
         <div className="absolute bottom-0 left-0 right-0 bg-black text-white py-2 text-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-full group-hover:translate-y-0">
-          <button className="flex items-center justify-center w-full gap-2">
+          <button onClick={handleAddToCart} className="flex items-center justify-center w-full gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
