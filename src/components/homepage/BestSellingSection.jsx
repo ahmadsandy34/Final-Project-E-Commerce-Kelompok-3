@@ -6,8 +6,13 @@ import Coat from "../../assets/best_seling/coat.svg";
 import Bag from "../../assets/best_seling/bag.svg";
 import Cooler from "../../assets/best_seling/cooler.svg";
 import Bookshelf from "../../assets/best_seling/bookshelf.svg";
+import { useSelector } from "react-redux";
+import { selectLanguage } from "../../redux/slice/languageSlice";
 
 const BestSellingSection = () => {
+
+  const language = useSelector(selectLanguage); 
+
   const BestSellingProducts = [
     {
       title: "The north coat",
@@ -45,15 +50,15 @@ const BestSellingSection = () => {
     <section className="w-4/5 mx-auto mt-4 lg:mt-20">
       <div className="hidden lg:flex items-center gap-2">
         <div className="w-1 h-6 bg-[#DB4444]"></div>
-        <p className="text-[#DB4444] font-semibold">This Month</p>
+        <p className="text-[#DB4444] font-semibold"> {language === 'en' ? 'This Month' : 'Bulan Ini'}</p>
       </div>
       <div className="flex justify-between items-center mt-2">
         <h2 className="text-sm lg:text-4xl font-semibold">
-          Best Selling Products
+          {language === 'en' ? 'Best Selling Products' : 'Produk Terlaris'}
         </h2>
         <Link to="/best-selling" className="contents">
           <button className="text-[#DB4444] lg:text-white text-xs lg:text-base lg:font-medium lg:py-4 lg:px-12 bg-transparent lg:bg-[#DB4444] rounded-sm">
-            View All
+            {language === 'en' ? 'View All' : 'Lihat Semua'}
           </button>
         </Link>
       </div>

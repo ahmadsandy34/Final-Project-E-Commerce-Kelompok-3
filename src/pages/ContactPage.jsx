@@ -4,8 +4,11 @@ import DOMPurify from 'dompurify';
 import Phone from "../assets/contact/phone.svg";
 import Mail from "../assets/contact/mail.svg";
 import SEO from "../components/SEO";
+import { useSelector } from "react-redux";
+import { selectLanguage } from "../redux/slice/languageSlice";
 
 const ContactPage = () => {
+  const language = useSelector(selectLanguage);
   const ref = useRef(null);
   const [formData, setFormData] = useState({
     name: '',
@@ -32,7 +35,7 @@ const ContactPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     // Sanitize all form data before submission
     const sanitizedData = {
       name: DOMPurify.sanitize(formData.name),
@@ -49,9 +52,9 @@ const ContactPage = () => {
   return (
     <>
       <SEO
-        title="Contact Us - Exclusive"
-        description="Get in touch with Exclusive. We're here to help with any questions or support you need."
-        keywords="contact, support, exclusive, customer service, contact us"
+        title={language === 'id' ? "Hubungi Kami - Exclusive" : "Contact Us - Exclusive"}
+        description={language === 'id' ? "Hubungi Exclusive. Kami siap membantu dengan pertanyaan atau dukungan apa pun yang Anda butuhkan." : "Get in touch with Exclusive. We're here to help with any questions or support you need."}
+        keywords={language === 'id' ? "kontak, dukungan, exclusive, layanan pelanggan, hubungi kami" : "contact, support, exclusive, customer service, contact us"}
         robots="index, follow"
       />
       <section className="lg:w-4/5 mx-auto">
@@ -59,28 +62,28 @@ const ContactPage = () => {
           className="w-4/5 mx-auto lg:w-full text-sm text-black mt-12"
           ref={ref}
         >
-          <p className="opacity-50 inline">Home / </p>
-          <p className="opacity-100 inline">Contact</p>
+          <p className="opacity-50 inline">{language === 'id' ? "Beranda / " : "Home / "}</p>
+          <p className="opacity-100 inline">{language === 'id' ? "Kontak" : "Contact"}</p>
         </div>
 
         <div className="flex flex-col lg:flex-row mt-12 gap-8">
           <div className="flex flex-col basis-1/4 p-4 rounded-sm shadow-custom-light w-5/6 mx-auto">
             <div className="flex flex-col lg:flex-row items-center gap-2">
               <img src={Phone} alt="Phone" />
-              <p className="font-medium">Call To Us</p>
+              <p className="font-medium">{language === 'id' ? "Hubungi Kami" : "Call To Us"}</p>
             </div>
             <div className="border-b border-black/50 mb-5">
               <p className="text-sm my-5">
-                We are available 24/7, 7 days a week.
+                {language === 'id' ? "Kami tersedia 24/7, 7 hari seminggu." : "We are available 24/7, 7 days a week."}
               </p>
-              <p className="text-sm mb-5">Phone: +8801611112222</p>
+              <p className="text-sm mb-5">{language === 'id' ? "Telepon: +8801611112222" : "Phone: +8801611112222"}</p>
             </div>
             <div className="flex flex-col lg:flex-row items-center gap-2">
               <img src={Mail} alt="Mail" />
-              <p className="font-medium">Write To Us</p>
+              <p className="font-medium">{language === 'id' ? "Tulis Kepada Kami" : "Write To Us"}</p>
             </div>
             <p className="text-sm my-5">
-              Fill out our form and we will contact you within 24 hours.
+              {language === 'id' ? "Isi formulir kami dan kami akan menghubungi Anda dalam 24 jam." : "Fill out our form and we will contact you within 24 hours."}
             </p>
             <p className="text-sm mb-5">Emails: customer@exclusive.com</p>
             <p className="text-sm mb-5">Emails: support@exclusive.com</p>
@@ -94,7 +97,7 @@ const ContactPage = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  placeholder="Your Name *"
+                  placeholder={language === 'id' ? "Nama Anda *" : "Your Name *"}
                   className="bg-[#F5F5F5] py-3 px-4 rounded-md"
                   required
                 />
@@ -103,7 +106,7 @@ const ContactPage = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  placeholder="Your Email *"
+                  placeholder={language === 'id' ? "Email Anda *" : "Your Email *"}
                   className="bg-[#F5F5F5] py-3 px-4 rounded-md"
                   required
                 />
@@ -112,7 +115,7 @@ const ContactPage = () => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleInputChange}
-                  placeholder="Your Phone *"
+                  placeholder={language === 'id' ? "Nomor Telepon Anda *" : "Your Phone *"}
                   className="bg-[#F5F5F5] py-3 px-4 rounded-md"
                   required
                 />
@@ -123,7 +126,7 @@ const ContactPage = () => {
                   value={formData.message}
                   onChange={handleInputChange}
                   rows="6"
-                  placeholder="Your Message"
+                  placeholder={language === 'id' ? "Pesan Anda" : "Your Message"}
                   className="bg-[#F5F5F5] py-3 px-4 rounded-md resize-none"
                 />
               </div>
@@ -132,7 +135,7 @@ const ContactPage = () => {
                   type="submit"
                   className="bg-[#DB4444] text-white py-4 px-12 rounded-md"
                 >
-                  Send Message
+                  {language === 'id' ? "Kirim Pesan" : "Send Message"}
                 </button>
               </div>
             </form>

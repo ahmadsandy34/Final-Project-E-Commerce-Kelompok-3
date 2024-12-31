@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import Search from '../assets/navbar/search.svg';
 import Cart from '../assets/navbar/cart.svg';
 import Wishlist from '../assets/navbar/wishlist.svg';
@@ -13,9 +12,12 @@ import Order from '../assets/navbar/order.svg';
 import Reviews from '../assets/navbar/reviews.svg';
 import Logout from '../assets/navbar/logout.svg';
 import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleLanguage, selectLanguage } from '../redux/slice/languageSlice';
 
 const Navbar = ({ token }) => {
   const cartTotal = useSelector((state) => state.cart.cartTotal);
+  const language = useSelector(selectLanguage);
 
   console.log(cartTotal);
 
@@ -23,6 +25,7 @@ const Navbar = ({ token }) => {
   const [currentUserIcon, setCurrentUserIcon] = useState(User);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   // Close dropdown on click anywhere outside the dropdown
@@ -44,6 +47,8 @@ const Navbar = ({ token }) => {
     setIsDropdownOpen((prev) => !prev);
   };
 
+  console.log(language);
+
   const handleDropdownLinkClick = () => {
     setIsDropdownOpen(false);
     setCurrentUserIcon(User);
@@ -60,20 +65,25 @@ const Navbar = ({ token }) => {
     setIsOpen(false); // Close the mobile menu
   };
 
+  const handleLanguageChange = (e) => {
+    dispatch(toggleLanguage());
+  };
+
   return (
     <div className='w-full'>
       {/* Top Banner */}
       <div className='w-full bg-black text-white py-2 px-4 text-center'>
         <div className='flex justify-between items-center max-w-screen-xl mx-auto'>
           <p className='text-sm text-center flex-1'>
-            Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!{' '}
+            {language === 'en' ? 'Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!' : 'Diskon Musim Panas untuk Semua Pakaian Renang dan Pengiriman Ekspres Gratis - Potongan 50%!'}{' '}
             <Link to='/best-selling' className='font-bold hover:underline'>
-              ShopNow
+              {language === 'en' ? 'Shop Now' : 'Beli Sekarang'}
             </Link>
           </p>
           <div>
-            <select className='bg-black text-white text-sm focus:outline-none'>
-              <option>English</option>
+            <select className='bg-black text-white text-sm focus:outline-none' onChange={handleLanguageChange} value={language}>
+              <option value='en'>English</option>
+              <option value='id'>Indonesia</option>
             </select>
           </div>
         </div>
@@ -85,23 +95,23 @@ const Navbar = ({ token }) => {
           <div className='flex items-center justify-between h-16'>
             {/* Logo */}
             <Link to='/' className='hidden lg:block text-2xl font-bold text-black'>
-              Exclusive
+              {language === 'en' ? 'Exclusive' : 'Exclusive'}
             </Link>
 
             {/* Desktop Navigation */}
             <div className='hidden md:flex items-center space-x-6'>
               <Link to='/' className='text-black hover:text-gray-500'>
-                Home
+                {language === 'en' ? 'Home' : 'Beranda'}
               </Link>
               <Link to='/contact' className='text-black hover:text-gray-500'>
-                Contact
+                {language === 'en' ? 'Contact' : 'Kontak'}
               </Link>
               <Link to='/about' className='text-black hover:text-gray-500'>
-                About
+                {language === 'en' ? 'About' : 'Tentang'}
               </Link>
               {!token && ( // Hanya tampilkan jika tidak ada token
                 <Link to='/auth/register' className='text-black hover:text-gray-500'>
-                  Sign Up
+                  {language === 'en' ? 'Sign Up' : 'Registrasi'}
                 </Link>
               )}
             </div>
@@ -109,7 +119,7 @@ const Navbar = ({ token }) => {
             {/* Search Bar (Desktop) */}
             <div className='hidden md:flex flex-row items-center'>
               <div className='relative'>
-                <input type='text' placeholder='What are you looking for?' className='border rounded-lg py-2 px-4 w-64 bg-[#F5F5F5]' />
+                <input type='text' placeholder={language === 'en' ? 'What are you looking for?' : 'Apa yang anda cari?'} className='border rounded-lg py-2 px-4 w-64 bg-[#F5F5F5]' />
                 <button type='submit' className='absolute inset-y-0 end-0 flex items-center pe-3'>
                   <img src={Search} alt='Search' className='w-5 h-5' />
                 </button>
@@ -130,13 +140,13 @@ const Navbar = ({ token }) => {
                     {isDropdownOpen && (
                       <div className='absolute right-0 mt-2 w-48 bg-gradient-to-t from-black via-black/80 to-black/60 backdrop-blur-xl text-white rounded-md z-10'>
                         <Link to='/my-account/profile' className='block px-2 py-2 text-sm hover:bg-gray-700' onClick={handleDropdownLinkClick}>
-                          <img src={UserDrop} alt='User' className='inline w-7 h-7 me-1' /> Manage My Account
+                          <img src={UserDrop} alt='User' className='inline w-7 h-7 me-1' /> {language === 'en' ? 'Manage My Account' : 'Kelola Akun Saya'}
                         </Link>
                         <Link to='/my-account/orders' className='block px-2 py-2 text-sm hover:bg-gray-700' onClick={handleDropdownLinkClick}>
-                          <img src={Order} alt='Order' className='inline w-6 h-6 me-2' /> My Order
+                          <img src={Order} alt='Order' className='inline w-6 h-6 me-2' /> {language === 'en' ? 'My Orders' : 'Pesanan Saya'}
                         </Link>
                         <Link to='#' className='block px-2 py-2 text-sm hover:bg-gray-700' onClick={handleDropdownLinkClick}>
-                          <img src={Reviews} alt='Reviews' className='inline w-6 h-6 me-2' /> My Reviews
+                          <img src={Reviews} alt='Reviews' className='inline w-6 h-6 me-2' /> {language === 'en' ? 'My Reviews' : 'Ulasan Saya'}
                         </Link>
                         <button
                           onClick={() => {
@@ -144,7 +154,7 @@ const Navbar = ({ token }) => {
                             handleLogout();
                           }}
                           className='block w-full text-left px-2 py-2 text-sm hover:bg-gray-700'>
-                          <img src={Logout} alt='Logout' className='inline w-6 h-6 me-2' /> Logout
+                          <img src={Logout} alt='Logout' className='inline w-6 h-6 me-2' /> {language === 'en' ? 'Logout' : 'Keluar'}
                         </button>
                       </div>
                     )}
@@ -184,17 +194,17 @@ const Navbar = ({ token }) => {
                 {/* Navigation Links */}
                 <nav className={`space-y-4 ${token ? '' : 'border-b border-gray-400 pb-4'} `}>
                   <Link to='/' className='block text-red-500 font-medium border-l-4 border-red-500 pl-4' onClick={handleLinkClick}>
-                    Home
+                    {language === 'en' ? 'Home' : 'Beranda'}
                   </Link>
                   <Link to='/contact' className='block text-gray-600 pl-4 hover:text-black' onClick={handleLinkClick}>
-                    Contact
+                    {language === 'en' ? 'Contact' : 'Kontak'}
                   </Link>
                   <Link to='/about' className='block text-gray-600 pl-4 hover:text-black' onClick={handleLinkClick}>
-                    About
+                    {language === 'en' ? 'About' : 'Tentang'}
                   </Link>
                   {!token && ( // Hanya tampilkan jika tidak ada token
                     <Link to='/auth/register' className='block text-gray-600 pl-4 hover:text-black' onClick={handleLinkClick}>
-                      Sign Up
+                      {language === 'en' ? 'Sign Up' : 'Registrasi'}
                     </Link>
                   )}
                 </nav>
@@ -217,10 +227,10 @@ const Navbar = ({ token }) => {
                 <div className='absolute bottom-6 right-6 flex items-center'>
                   <div className='flex gap-x-3'>
                     <Link to='/auth' className='border border-red-500 rounded-md px-10 py-2 text-red-500 font-medium' onClick={handleLinkClick}>
-                      Sign Up
+                      {language === 'en' ? 'Sign Up' : 'Registrasi'}
                     </Link>
                     <Link to='/auth' className='bg-red-500 border border-red-500 rounded-md px-10 py-2 text-white font-medium' onClick={handleLinkClick}>
-                      Login
+                      {language === 'en' ? 'Sign In' : 'Masuk'}
                     </Link>
                   </div>
                 </div>
