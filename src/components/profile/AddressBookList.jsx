@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import AddressBookCard from "./AddressBookCard";
+import PropTypes from "prop-types";
 
 const AddressBookList = ({ setActiveComponent, setIsEdit }) => {
   const handleClick = (component, isEdit) => {
@@ -23,6 +25,11 @@ const AddressBookList = ({ setActiveComponent, setIsEdit }) => {
       </div>
     </div>
   );
+};
+
+AddressBookList.propTypes = {
+  setActiveComponent: PropTypes.func.isRequired,
+  setIsEdit: PropTypes.func.isRequired,
 };
 
 export default AddressBookList;

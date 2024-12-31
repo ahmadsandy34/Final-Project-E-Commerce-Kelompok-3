@@ -2,19 +2,19 @@ import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const ProtectedRoute = ({ children, isLoggedIn }) => {
+const ProtectedRoute = ({ children }) => {
   const location = useLocation();
+  const token = localStorage.getItem('token');
 
-  if (!isLoggedIn) {
+  if (!token) {
     return <Navigate to='/auth/login' state={{ from: location }} />;
   }
 
   return children;
 };
 
-ProtectedRoute.PropTypes = {
-  children: PropTypes.node.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired,
+ProtectedRoute.propTypes = {
+  children: PropTypes.node.isRequired
 };
 
 export default ProtectedRoute;

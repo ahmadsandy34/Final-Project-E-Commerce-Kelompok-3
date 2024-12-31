@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import DOMPurify from "dompurify";
 import Breadcrumb from "../components/cart/Breadcrumb";
 import ProductCard from "../components/cart/ProductCard";
 import InvoiceDetail from "../components/cart/InvoiceDetail";
@@ -10,6 +12,7 @@ import SEO from "../components/SEO";
 const CartPage = () => {
   const ref = useRef(null);
   const navigate = useNavigate();
+  const [couponCode, setCouponCode] = useState("");
   const [products, setProducts] = useState([
     { id: 1, title: "LCD Monitor", price: 650, image: Monitor, quantity: 1 },
     { id: 2, title: "H1 Gamepad", price: 550, image: Gamepad, quantity: 1 },
@@ -34,6 +37,11 @@ const CartPage = () => {
     navigate("/checkout/billing", {
       state: { cart: products, total: calculateTotal() },
     });
+  };
+
+  const handleCouponChange = (e) => {
+    const sanitizedValue = DOMPurify.sanitize(e.target.value);
+    setCouponCode(sanitizedValue);
   };
 
   useEffect(() => {
@@ -87,9 +95,11 @@ const CartPage = () => {
                   type="text"
                   placeholder="Coupon Code"
                   className="border-2 border-gray-500 p-2 w-full"
+                  value={couponCode}
+                  onChange={handleCouponChange}
                 />
                 <div className="flex justify-end w-full mt-2 sm:mt-0">
-                  <button className="bg-[#DB4444] hover:bg-[#CD3535FF] rounded text-white p-2 w-1/2 sm:w-full font-medium">
+                  <button disabled className="bg-[#DB4444] hover:bg-[#CD3535FF] rounded text-white p-2 w-1/2 sm:w-full font-medium cursor-pointer">
                     Apply Coupon
                   </button>
                 </div>

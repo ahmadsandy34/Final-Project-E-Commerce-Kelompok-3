@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import TeamMember from "./TeamMember";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -21,9 +22,9 @@ const TeamSection = () => {
     <div className="max-w-screen-xl mx-auto px-4 py-12">
       <div className="mb-16">
         <Swiper
-          spaceBetween={30}
-          slidesPerView={1}
-          loop={true} // Enable loop
+          spaceBetween={8}
+          slidesPerView={3}
+          loop={true}
           pagination={{
             clickable: true,
             bulletClass: "swiper-pagination-bullet",
@@ -35,9 +36,14 @@ const TeamSection = () => {
           }}
           modules={[Pagination, Autoplay]}
           breakpoints={{
-            640: { slidesPerView: 1 },
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
+            768: { 
+              slidesPerView: 2,
+              spaceBetween: 30
+            },
+            1024: { 
+              slidesPerView: 3,
+              spaceBetween: 30
+            },
           }}
           className="pb-12"
         >

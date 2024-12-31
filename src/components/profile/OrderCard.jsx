@@ -1,4 +1,6 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
+import PropTypes from "prop-types";
 
 const OrderCard = ({order, status, name, image }) => {
   return (
@@ -19,6 +21,13 @@ const OrderCard = ({order, status, name, image }) => {
       </div>
     </div>
   );
+};
+
+OrderCard.propTypes = {
+  order: PropTypes.string,
+  status: PropTypes.string,
+  name: PropTypes.string,
+  image: PropTypes.string,
 };
 
 export default OrderCard;

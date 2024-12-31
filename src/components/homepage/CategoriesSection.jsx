@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -22,7 +23,7 @@ const CategoriesSection = () => {
   const categories = [
     { title: "Phones", image: Phone },
     { title: "Computers", image: Computer },
-    { title: "SmartWatch", image: SmartWatch },
+    { title: "Smart Watch", image: SmartWatch },
     { title: "Camera", image: Camera },
     { title: "Headphones", image: Headphones },
     { title: "Gaming", image: Gaming },
@@ -54,38 +55,61 @@ const CategoriesSection = () => {
         </div>
       </div>
       
-      <Swiper
-        modules={[Navigation]}
-        slidesPerView={1}
-        spaceBetween={16}
-        navigation={{
-          prevEl: '.custom-prev-button',
-          nextEl: '.custom-next-button',
-        }}
-        breakpoints={{
-          1024: {
-            slidesPerView: 6,
-            spaceBetween: 16,
-          },
-          768: {
-            slidesPerView: 4,
-            spaceBetween: 16,
-          },
-          640: {
-            slidesPerView: 3,
-            spaceBetween: 16,
-          },
-        }}
-        className="mt-4 lg:mt-8"
-      >
+      {/* Mobile View */}
+      <div className="flex overflow-x-auto gap-4 mt-4 lg:hidden no-scrollbar">
         {categories.map((category, index) => (
-          <SwiperSlide key={index}>
-            <Link to="/products/category/electronics" className="contents">
-              <CategoryCard {...category} />
-            </Link>
-          </SwiperSlide>
+          <Link 
+            key={index}
+            to="/products/category/electronics" 
+            className="flex flex-col items-center flex-shrink-0"
+          >
+            <div className="w-24 h-24 border border-gray-200 rounded-lg flex items-center justify-center hover:border-[#DB4444] transition-colors">
+              <img 
+                src={category.image} 
+                alt={category.title} 
+                className="w-8 h-8"
+              />
+            </div>
+            <p className="text-sm mt-2 text-center">{category.title}</p>
+          </Link>
         ))}
-      </Swiper>
+      </div>
+
+      {/* Desktop View - Swiper */}
+      <div className="hidden lg:block">
+        <Swiper
+          modules={[Navigation]}
+          slidesPerView={1}
+          spaceBetween={16}
+          navigation={{
+            prevEl: '.custom-prev-button',
+            nextEl: '.custom-next-button',
+          }}
+          breakpoints={{
+            1024: {
+              slidesPerView: 6,
+              spaceBetween: 16,
+            },
+            768: {
+              slidesPerView: 4,
+              spaceBetween: 16,
+            },
+            640: {
+              slidesPerView: 3,
+              spaceBetween: 16,
+            },
+          }}
+          className="mt-8"
+        >
+          {categories.map((category, index) => (
+            <SwiperSlide key={index}>
+              <Link to="/products/category/electronics" className="contents">
+                <CategoryCard {...category} />
+              </Link>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
     </section>
   );
 };

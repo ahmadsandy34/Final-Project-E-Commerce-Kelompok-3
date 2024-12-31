@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import side_image from '../../assets/auth/side_image.png';
-import Swal from 'sweetalert2'; // Import Sweet Alert
+import Swal from 'sweetalert2';
 
 const Auth = () => {
   const [formData, setFormData] = useState({
@@ -122,23 +122,69 @@ const Auth = () => {
             <form onSubmit={handleSubmit} className='space-y-4'>
               {!isLogin && (
                 <div>
-                  <input type='text' name='name' placeholder='Name' value={formData.name} onChange={handleChange} className='w-full border-b border-gray-300 py-2 focus:outline-none focus:border-gray-500' required />
+                  <input 
+                    type='text' 
+                    name='name' 
+                    placeholder='Name' 
+                    value={formData.name} 
+                    onChange={handleChange} 
+                    className='w-full border-b border-gray-300 py-2 focus:outline-none focus:border-gray-500' 
+                    required 
+                  />
                 </div>
               )}
 
               <div>
-                <input type='email' name='email' placeholder='Email' value={formData.email} onChange={handleChange} className='w-full border-b border-gray-300 py-2 focus:outline-none focus:border-gray-500' required />
+                <input 
+                  type='email' 
+                  name='email' 
+                  placeholder='Email or Phone Number' 
+                  value={formData.email} 
+                  onChange={handleChange} 
+                  className='w-full border-b border-gray-300 py-2 focus:outline-none focus:border-gray-500' 
+                  required 
+                />
               </div>
 
               <div>
-                <input type='password' name='password' placeholder='Password' value={formData.password} onChange={handleChange} className='w-full border-b border-gray-300 py-2 focus:outline-none focus:border-gray-500' required />
+                <input 
+                  type='password' 
+                  name='password' 
+                  placeholder='Password' 
+                  value={formData.password} 
+                  onChange={handleChange} 
+                  className='w-full border-b border-gray-300 py-2 focus:outline-none focus:border-gray-500' 
+                  required 
+                />
               </div>
 
-              <div className='flex justify-between items-center'>
-                <button type='submit' className='w-full bg-[#DB4444] text-white py-2 px-4 rounded hover:bg-red-600 transition-colors'>
-                  {isLogin ? 'Log in' : 'Create Account'}
-                </button>
-              </div>
+              {isLogin && (
+                <div className='flex justify-between items-center'>
+                  <button 
+                    type='submit' 
+                    className='bg-[#DB4444] text-white py-2 px-16 rounded hover:bg-red-600 transition-colors'
+                  >
+                    Log in
+                  </button>
+                  <Link 
+                    to='/auth/forgot-password' 
+                    className='text-[#DB4444] text-sm hover:underline'
+                  >
+                    Forget Password?
+                  </Link>
+                </div>
+              )}
+
+              {!isLogin && (
+                <div className='flex justify-between items-center'>
+                  <button 
+                    type='submit' 
+                    className='w-full bg-[#DB4444] text-white py-2 px-4 rounded hover:bg-red-600 transition-colors'
+                  >
+                    Create Account
+                  </button>
+                </div>
+              )}
             </form>
 
             <div className='mt-6 text-left text-gray-600'>
