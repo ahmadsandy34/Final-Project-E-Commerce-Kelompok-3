@@ -6,8 +6,11 @@ import Woman from "../../assets/home/woman.svg";
 import Speaker from "../../assets/home/speaker.svg";
 import Perfume from "../../assets/home/perfume.svg";
 import RecommendedCard from "./RecommendedCard";
+import { useSelector } from "react-redux";
+import { selectLanguage } from "../../redux/slice/languageSlice";
 
 const RecommendedSection = () => {
+  const language = useSelector(selectLanguage);
   const recommended = [
     {
       title: "PlayStation 5",
@@ -34,10 +37,10 @@ const RecommendedSection = () => {
     <section className="w-4/5 mx-auto mt-4 lg:mt-20">
       <div className="hidden lg:flex items-center gap-2">
         <div className="w-1 h-6 bg-[#DB4444]"></div>
-        <p className="text-[#DB4444] font-semibold">Featured</p>
+        <p className="text-[#DB4444] font-semibold">{language === 'en' ? 'Featured' : 'Unggulan'}</p>
       </div>
       <div className="flex items-center mt-2">
-        <h2 className="text-sm lg:text-4xl font-semibold">Recommended</h2>
+        <h2 className="text-sm lg:text-4xl font-semibold">{language === 'en' ? 'Recommended' : 'Rekomendasi'}</h2>
       </div>
 
       <div className="hidden lg:grid lg:grid-cols-2 lg:gap-8 lg:mt-8 lg:h-[600px]">
@@ -47,9 +50,9 @@ const RecommendedSection = () => {
             <div className="absolute bottom-3 left-3 pl-4 pb-4 text-white">
               <p className="text-2xl font-semibold mb-2">PlayStation 5</p>
               <p className="w-3/4 text-sm mb-4">
-                Black and White version of the PS5 coming out on sale.
+                {language === 'en' ? 'Black and White version of the PS5 coming out on sale.' : 'Versi hitam dan putih dari PS5 yang akan keluar di sale.'}
               </p>
-              <button className="hover:underline underline-offset-4">Shop Now</button>
+              <button className="hover:underline underline-offset-4">{language === 'en' ? 'Shop Now' : 'Beli Sekarang'}</button>
             </div>
           </div>
         </Link>
@@ -59,13 +62,13 @@ const RecommendedSection = () => {
               <img src={Woman} alt="Woman" />
               <div className="absolute bottom-3 left-3 pl-4 pb-4 text-white">
                 <p className="text-2xl font-semibold mb-2">
-                  Women’s Collections
+                  {language === 'en' ? 'Women’s Collections' : 'Koleksi Wanita'}
                 </p>
                 <p className="w-3/4 text-sm mb-4">
-                  Featured woman collections that give you another vibe.
+                  {language === 'en' ? 'Featured woman collections that give you another vibe.' : 'Koleksi wanita yang memberikan anda sentuhan baru.'}
                 </p>
                 <button className="hover:underline underline-offset-4">
-                  Shop Now
+                  {language === 'en' ? 'Shop Now' : 'Beli Sekarang'}
                 </button>
               </div>
             </div>
@@ -75,10 +78,10 @@ const RecommendedSection = () => {
               <div className="bg-black w-full h-full flex justify-center items-center relative">
                 <img src={Speaker} alt="Speaker" />
                 <div className="absolute bottom-3 left-3 pl-4 pb-4 text-white">
-                  <p className="text-2xl font-semibold mb-2">Speakers</p>
-                  <p className="text-sm mb-4">Amazon wireless speakers</p>
+                  <p className="text-2xl font-semibold mb-2">{language === 'en' ? 'Speakers' : 'Speaker'}</p>
+                  <p className="text-sm mb-4">{language === 'en' ? 'Amazon wireless speakers' : 'Speaker wireless Amazon'}</p>
                   <button className="hover:underline underline-offset-4">
-                    Shop Now
+                    {language === 'en' ? 'Shop Now' : 'Beli Sekarang'}
                   </button>
                 </div>
               </div>
@@ -87,10 +90,10 @@ const RecommendedSection = () => {
               <div className="bg-black w-full h-full flex justify-center items-center relative">
                 <img src={Perfume} alt="Perfume" />
                 <div className="absolute bottom-3 left-3 pl-4 pb-4 text-white">
-                  <p className="text-2xl font-semibold mb-2">Perfume</p>
+                  <p className="text-2xl font-semibold mb-2">{language === 'en' ? 'Perfume' : 'Perfume'}</p>
                   <p className="text-sm mb-4">GUCCI INTENSE OUD EDP</p>
                   <button className="hover:underline underline-offset-4">
-                    Shop Now
+                    {language === 'en' ? 'Shop Now' : 'Beli Sekarang'}
                   </button>
                 </div>
               </div>
