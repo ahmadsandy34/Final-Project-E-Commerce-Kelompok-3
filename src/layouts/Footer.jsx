@@ -80,7 +80,7 @@ const Footer = () => {
             <Link to="/my-account" className="contents">
               <p className="mb-4 hover:text-gray-400">My Account</p>
             </Link>
-            <Link to="/auth" className="contents">
+            <Link to="/auth/login" className="contents">
               <p className="mb-4 hover:text-gray-400">Login / Register</p>
             </Link>
             <Link to="/cart" className="contents">

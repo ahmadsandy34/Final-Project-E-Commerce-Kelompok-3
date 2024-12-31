@@ -1,6 +1,8 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
 import Right from "../../assets/home/right.svg";
 import Left from "../../assets/home/left.svg";
 import CategoryCard from "../../components/homepage/CategoryCard";
@@ -10,6 +12,12 @@ import SmartWatch from "../../assets/home/smartwatch.svg";
 import Camera from "../../assets/home/camera.svg";
 import Headphones from "../../assets/home/headphone.svg";
 import Gaming from "../../assets/home/gamepad.svg";
+import Mouse from "../../assets/home/mouse.svg";
+import Keyboard from "../../assets/home/keyboard.svg";
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 const CategoriesSection = () => {
   const categories = [
@@ -19,27 +27,9 @@ const CategoriesSection = () => {
     { title: "Camera", image: Camera },
     { title: "Headphones", image: Headphones },
     { title: "Gaming", image: Gaming },
+    { title: "Mouse", image: Mouse },
+    { title: "Keyboard", image: Keyboard },
   ];
-
-  const [currentPage, setCurrentPage] = useState(1); 
-  const itemsPerPage = 6;
-
-  const handleNext = () => {
-    if (currentPage < Math.ceil(categories.length / itemsPerPage)) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
-  const handlePrev = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
-
-  const displayedCategories = categories.slice(
-    (currentPage - 1) * itemsPerPage, 
-    currentPage * itemsPerPage
-  );
 
   return (
     <section className="w-4/5 mx-auto mt-4 lg:mt-20">
@@ -53,28 +43,50 @@ const CategoriesSection = () => {
         </h2>
         <div className="hidden lg:flex gap-2">
           <button
-            onClick={handlePrev}
-            disabled={currentPage === 1} 
-            className="rounded-full bg-gray-100 p-2 disabled:opacity-30"
+            className="custom-prev-button rounded-full bg-gray-100 p-2 disabled:opacity-30"
           >
             <img src={Left} alt="Left" />
           </button>
           <button
-            onClick={handleNext}
-            disabled={currentPage === Math.ceil(categories.length / itemsPerPage)} 
-            className="rounded-full bg-gray-100 p-2 disabled:opacity-30"
+            className="custom-next-button rounded-full bg-gray-100 p-2 disabled:opacity-30"
           >
             <img src={Right} alt="Right" />
           </button>
         </div>
       </div>
-      <div className="flex flex-row overflow-x-auto lg:grid lg:grid-cols-6 gap-4 mt-4 lg:mt-8">
-        {displayedCategories.map((category, index) => (
-          <Link to="/products/category/electronics" key={index} className="contents">
-            <CategoryCard {...category} />
-          </Link>
+      
+      <Swiper
+        modules={[Navigation]}
+        slidesPerView={1}
+        spaceBetween={16}
+        navigation={{
+          prevEl: '.custom-prev-button',
+          nextEl: '.custom-next-button',
+        }}
+        breakpoints={{
+          1024: {
+            slidesPerView: 6,
+            spaceBetween: 16,
+          },
+          768: {
+            slidesPerView: 4,
+            spaceBetween: 16,
+          },
+          640: {
+            slidesPerView: 3,
+            spaceBetween: 16,
+          },
+        }}
+        className="mt-4 lg:mt-8"
+      >
+        {categories.map((category, index) => (
+          <SwiperSlide key={index}>
+            <Link to="/products/category/electronics" className="contents">
+              <CategoryCard {...category} />
+            </Link>
+          </SwiperSlide>
         ))}
-      </div>
+      </Swiper>
     </section>
   );
 };
