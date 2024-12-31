@@ -1,35 +1,29 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import InvoiceProduct from "./InvoiceProduct";
 import InvoiceDetail from "../cart/InvoiceDetail";
-import BankLogo from "../../assets/checkout/bank-logo.png";
 
-const InvoiceCard = () => {
+const InvoiceCard = ({ cart, total }) => {
   return (
     <div className="space-y-4">
-      <InvoiceProduct />
-      <InvoiceProduct />
-      <InvoiceDetail />
+      {cart.map((item) => (
+        <InvoiceProduct
+          key={item.id}
+          title={item.title}
+          image={item.image}
+          total={item.price * item.quantity}
+        />
+      ))}
+      <InvoiceDetail total={total} />
       <div>
         <form className="space-y-3">
-          <div className="flex justify-between items-center">
-            <div className="flex justify-between items-center space-x-1">
-              <input
-                type="radio"
-                name="choice"
-                value="bank"
-                className="w-5 h-5"
-              />
-              <p className="my-auto">Bank</p>
-            </div>
-            <img src={BankLogo} alt="bank-logo" className="h-[28px]" />
-          </div>
-          <div className="flex items-center space-x-1">
-            <input type="radio" name="choice" value="cod" className="w-5 h-5" />
-            <p className="my-auto">Cash on delivery</p>
-          </div>
           <div>
-            <Link to="/checkout/status" className="contents">
+            <Link
+              to="/checkout/status"
+              state={{ cart, total }}
+              className="contents"
+            >
               <button className="bg-[#DB4444] text-white font-medium py-3 px-8 w-full sm:w-64 rounded">
                 Place Order
               </button>
@@ -39,6 +33,19 @@ const InvoiceCard = () => {
       </div>
     </div>
   );
+};
+
+InvoiceCard.propTypes = {
+  cart: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      quantity: PropTypes.number.isRequired,
+    })
+  ).isRequired,
+  total: PropTypes.number.isRequired,
 };
 
 export default InvoiceCard;

@@ -1,0 +1,171 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+
+    <loc>https://final-project-e-commerce-kelompok-3-front.vercel.app/</loc>
+
+    <lastmod>2024-12-26</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>1.0</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://final-project-e-commerce-kelompok-3-front.vercel.app/auth</loc>
+
+    <lastmod>2024-12-26</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.8</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://final-project-e-commerce-kelompok-3-front.vercel.app/wishlist</loc>
+
+    <lastmod>2024-12-26</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.8</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://final-project-e-commerce-kelompok-3-front.vercel.app/products</loc>
+
+    <lastmod>2024-12-26</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.8</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://final-project-e-commerce-kelompok-3-front.vercel.app/products/category/:category</loc>
+
+    <lastmod>2024-12-26</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.8</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://final-project-e-commerce-kelompok-3-front.vercel.app/best-selling</loc>
+
+    <lastmod>2024-12-26</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.8</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://final-project-e-commerce-kelompok-3-front.vercel.app/product/detail</loc>
+
+    <lastmod>2024-12-26</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.8</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://final-project-e-commerce-kelompok-3-front.vercel.app/cart</loc>
+
+    <lastmod>2024-12-26</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.8</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://final-project-e-commerce-kelompok-3-front.vercel.app/checkout/billing</loc>
+
+    <lastmod>2024-12-26</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.8</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://final-project-e-commerce-kelompok-3-front.vercel.app/checkout/status</loc>
+
+    <lastmod>2024-12-26</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.8</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://final-project-e-commerce-kelompok-3-front.vercel.app/about</loc>
+
+    <lastmod>2024-12-26</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.8</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://final-project-e-commerce-kelompok-3-front.vercel.app/my-account</loc>
+
+    <lastmod>2024-12-26</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.8</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://final-project-e-commerce-kelompok-3-front.vercel.app/contact</loc>
+
+    <lastmod>2024-12-26</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.8</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://final-project-e-commerce-kelompok-3-front.vercel.app/*</loc>
+
+    <lastmod>2024-12-26</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.8</priority>
+
+  </url>
+ 
+</urlset>

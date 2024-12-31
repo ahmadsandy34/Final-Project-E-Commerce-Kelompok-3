@@ -5,7 +5,7 @@ import { ProductCard } from "./ProductCard";
 import PropTypes from "prop-types";
 
 const ProductSection = ({ title, products }) => {
-  const [visibleProducts, setVisibleProducts] = useState(6);
+  const [visibleProducts, setVisibleProducts] = useState(8);
   const [showMoreButton, setShowMoreButton] = useState(true);
 
   useEffect(() => {
@@ -14,7 +14,7 @@ const ProductSection = ({ title, products }) => {
       if (screenWidth < 768) {
         setVisibleProducts(4); // Layar kecil
       } else {
-        setVisibleProducts(6); // Layar besar
+        setVisibleProducts(8); // Layar besar
       }
       setShowMoreButton(products.length > visibleProducts);
     };
@@ -32,7 +32,7 @@ const ProductSection = ({ title, products }) => {
   }, [products]);
 
   const handleShowMore = () => {
-    const increment = window.innerWidth < 768 ? 4 : 6;
+    const increment = window.innerWidth < 768 ? 4 : 8;
     const newVisibleProducts = visibleProducts + increment;
     setVisibleProducts(newVisibleProducts);
 
@@ -51,11 +51,11 @@ const ProductSection = ({ title, products }) => {
         <h2 className="text-2xl font-semibold">{title}</h2>
       </div>
 
-      <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
         {displayedProducts.map((product) => (
-          <Link to={`/product/detail`} key={product.id}>
+          <div key={product.id}>
             <ProductCard key={product.id} {...product} type={1} />
-          </Link>
+          </div>
         ))}
       </div>
 

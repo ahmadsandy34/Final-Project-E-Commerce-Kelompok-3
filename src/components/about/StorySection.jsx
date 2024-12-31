@@ -4,13 +4,13 @@ import sideImage from '../../assets/about/sideImage.png';
 
 const StorySection = () => {
   return (
-    <div className='w-5/6 mx-auto px-4 py-12'>
+    <div className='w-5/6 mx-auto py-12 lg:w-full lg:py-0'>
       {/* Mobile Story Title */}
       <h1 className='text-2xl font-bold text-center md:hidden'>Our Story</h1>
 
       <div className='flex flex-col md:flex-row items-center gap-8'>
         {/* Story Content */}
-        <div className='w-full md:w-1/2 space-y-6'>
+        <div className='w-full md:w-1/2 space-y-6 lg:py-12 lg:ps-32'>
           {/* Desktop Story Title */}
           <h1 className='text-[54px] leading-tight font-bold hidden md:block'>Our Story</h1>
           <p className='lg:w-11/12 text-left'>
@@ -22,7 +22,7 @@ const StorySection = () => {
 
         {/* Image */}
         <div className='w-full md:w-1/2'>
-          <img src={sideImage} alt='Shopping People' className='w-full rounded-lg object-cover' />
+          <img src={sideImage} alt='Shopping People' className='w-full rounded-md object-cover' />
         </div>
       </div>
     </div>

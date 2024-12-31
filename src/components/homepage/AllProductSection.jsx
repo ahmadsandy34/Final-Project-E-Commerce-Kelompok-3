@@ -1,76 +1,97 @@
-/* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import ProductCard from "../../components/homepage/ProductCard";
-import Product from "../../assets/best_seling/product.png";
 import Right from "../../assets/home/right.svg";
 import Left from "../../assets/home/left.svg";
+import DogFood from "../../assets/home/dogfood.svg";
+import Cameras from "../../assets/home/cameras.svg";
+import Laptop from "../../assets/home/laptop.svg";
+import Curology from "../../assets/home/curology.svg";
+import Car from "../../assets/home/car.svg";
+import Shoes from "../../assets/home/shoes.svg";
+import Controller from "../../assets/home/controller.svg";
+import Jacket from "../../assets/home/jacket.svg";
 
 const AllProductSection = () => {
   const AllProducts = [
     {
-      title: "ASUS FHD Gaming Laptop",
-      price: 960,
-      originalPrice: 1160,
-      rating: 5,
-      reviews: 65,
-      discount: 35,
-      image: Product,
+      title: "Breed Dry Dog Food",
+      price: 100,
+      rating: 3,
+      reviews: 35,
+      image: DogFood,
     },
     {
-      title: "IPS LCD Gaming Monitor",
-      price: 1160,
-      rating: 4.5,
-      reviews: 65,
-      image: Product,
-    },
-    {
-      title: "HAVIT HV-G92 Gamepad",
-      price: 560,
+      title: "CANON EOS DSLR Camera",
+      price: 360,
       rating: 4,
-      reviews: 65,
-      isNew: true,
-      image: Product,
-    },
-    {
-      title: "AK-900 Wired Keyboard",
-      price: 200,
-      rating: 4.5,
-      reviews: 65,
-      image: Product,
+      reviews: 95,
+      image: Cameras,
     },
     {
       title: "ASUS FHD Gaming Laptop",
+      price: 700,
+      rating: 5,
+      reviews: 325,
+      image: Laptop,
+    },
+    {
+      title: "Curology Product Set ",
+      price: 500,
+      rating: 4,
+      reviews: 145,
+      image: Curology,
+    },
+    {
+      title: "Kids Electric Car",
       price: 960,
-      originalPrice: 1160,
       rating: 5,
       reviews: 65,
-      discount: 35,
-      image: Product,
+      image: Car,
     },
     {
-      title: "IPS LCD Gaming Monitor",
+      title: "Jr. Zoom Soccer Cleats",
       price: 1160,
-      rating: 4.5,
-      reviews: 65,
-      image: Product,
+      rating: 5,
+      reviews: 35,
+      image: Shoes,
     },
     {
-      title: "HAVIT HV-G92 Gamepad",
-      price: 560,
-      rating: 4,
-      reviews: 65,
-      isNew: true,
-      image: Product,
+      title: "GP11 Shooter USB Gamepad",
+      price: 660,
+      rating: 4.5,
+      reviews: 55,
+      image: Controller,
     },
     {
-      title: "AK-900 Wired Keyboard",
-      price: 200,
+      title: "Quilted Satin Jacket",
+      price: 660,
       rating: 4.5,
-      reviews: 65,
-      image: Product,
-    },
+      reviews: 55,
+      image: Jacket,
+    }
   ];
+
+  const [currentPage, setCurrentPage] = useState(1); 
+  const itemsPerPage = 8;
+
+  const handleNext = () => {
+    if (currentPage < Math.ceil(AllProducts.length / itemsPerPage)) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePrev = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const displayedProducts = AllProducts.slice(
+    (currentPage - 1) * itemsPerPage, 
+    currentPage * itemsPerPage
+  );
+
   return (
     <section className="w-4/5 mx-auto mt-4 lg:mt-20">
       <div className="hidden lg:flex items-center gap-2">
@@ -78,14 +99,20 @@ const AllProductSection = () => {
         <p className="text-[#DB4444] font-semibold">Our Product</p>
       </div>
       <div className="flex justify-between items-center mt-4">
-        <h2 className="text-sm lg:text-4xl font-semibold">
-          Explore Our Products
-        </h2>
+        <h2 className="text-sm lg:text-4xl font-semibold">Explore Our Products</h2>
         <div className="hidden lg:flex gap-2">
-          <button className="rounded-full bg-gray-100 p-2">
+          <button
+            onClick={handlePrev}
+            disabled={currentPage === 1} 
+            className="rounded-full bg-gray-100 p-2 disabled:opacity-30"
+          >
             <img src={Left} alt="Left" />
           </button>
-          <button className="rounded-full bg-gray-100 p-2">
+          <button
+            onClick={handleNext}
+            disabled={currentPage === Math.ceil(AllProducts.length / itemsPerPage)} 
+            className="rounded-full bg-gray-100 p-2 disabled:opacity-30"
+          >
             <img src={Right} alt="Right" />
           </button>
         </div>
@@ -97,17 +124,17 @@ const AllProductSection = () => {
       </div>
       <div className="mt-6 lg:mt-12">
         <div className="hidden lg:grid grid-cols-4 gap-4">
-          {AllProducts.map((product, index) => (
-            <Link to="/product/detail" className="contents" key={index}>
+          {displayedProducts.map((product, index) => (
+            <div className="contents" key={index}>
               <ProductCard key={index} {...product} type={2} />
-            </Link>
+            </div>
           ))}
         </div>
         <div className="lg:hidden grid grid-cols-2 gap-4">
-          {AllProducts.slice(0, 4).map((product, index) => (
-            <Link to="/product/detail" className="contents" key={index}>
+          {displayedProducts.slice(0, 4).map((product, index) => (
+            <div className="contents" key={index}>
               <ProductCard key={index} {...product} type={1} />
-            </Link>
+            </div>
           ))}
         </div>
       </div>

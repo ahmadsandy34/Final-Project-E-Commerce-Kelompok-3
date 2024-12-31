@@ -1,0 +1,8 @@
+User-agent: *
+
+Disallow: /components/ 
+Disallow: /layouts/
+Disallow: /assets/
+Disallow: /redux/
+
+Sitemap: https://final-project-e-commerce-kelompok-3-front.vercel.app/sitemap.xml

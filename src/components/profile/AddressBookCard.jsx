@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import DeleteIcon from "../../assets/profile/delete-icon.svg";
 import PenIcon from "../../assets/profile/pen-icon.svg";
+import PropTypes from "prop-types";
 
 const AddressBookCard = ({ handleClick, path }) => {
   return (
@@ -31,6 +33,11 @@ const AddressBookCard = ({ handleClick, path }) => {
       </div>
     </div>
   );
+};
+
+AddressBookCard.propTypes = {
+  handleClick: PropTypes.func,
+  path: PropTypes.string,
 };
 
 export default AddressBookCard;
