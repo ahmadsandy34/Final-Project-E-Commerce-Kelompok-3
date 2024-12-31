@@ -21,6 +21,14 @@ const BannerCategoriesSection = () => {
       title: "Enhance Your Music Experience",
       image: Boombox,
     },
+    {
+      title: "Enhance Your Music Experience",
+      image: Boombox,
+    },
+    {
+      title: "Enhance Your Music Experience",
+      image: Boombox,
+    },
   ];
   return (
     <Swiper
