@@ -63,14 +63,7 @@ const App = () => {
             <Route path='/products' element={<ProductPage />} />
             <Route path='/products/category/:category' element={<ProductPage />} />
             <Route path='/best-selling' element={<BestSellingPage handleChart={handleChart} />} />
-            <Route
-              path='/product/detail'
-              element={
-                <ProtectedRoute isLoggedIn={isLoggedIn}>
-                  <ProductDetailPage handleChart={handleChart} />
-                </ProtectedRoute>
-              }
-            />
+            <Route path='/product/detail' element={<ProductDetailPage handleChart={handleChart} />} />
             <Route
               path='/cart'
               element={
@@ -97,7 +90,7 @@ const App = () => {
             />
             <Route path='/about' element={<AboutPage />} />
             <Route
-              path='/my-account'
+              path='/my-account/*'
               element={
                 <ProtectedRoute isLoggedIn={isLoggedIn}>
                   <ProfilePage />
@@ -107,7 +100,7 @@ const App = () => {
             <Route path='/contact' element={<ContactPage />} />
             <Route path='*' element={<ErrorPage />} />
           </Routes>
-          <Footer />
+          <Footer token={token} />
         </BrowserRouter>
       </Provider>
     </>

@@ -1,15 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Breadcrumb from "../components/profile/Breadcrumb";
 import MenuProfile from "../components/profile/MenuProfile";
 import MainComponent from "../components/profile/MainComponent";
 import SEO from "../components/SEO";
 
 const ProfilePage = () => {
-  const [activeMenu, setActiveMenu] = useState("my-profile");
-  const handleActiveMenu = (menu) => {
-    setActiveMenu(menu);
-  };
-
   const ref = useRef(null);
 
   useEffect(() => {
@@ -35,11 +30,8 @@ const ProfilePage = () => {
             </p>
           </div>
           <div className="flex flex-col md:flex-row gap-x-16">
-            <MenuProfile
-              activeMenu={activeMenu}
-              setActiveMenu={handleActiveMenu}
-            />
-            <MainComponent activeMenu={activeMenu} />
+            <MenuProfile />
+            <MainComponent />
           </div>
         </div>
       </div>

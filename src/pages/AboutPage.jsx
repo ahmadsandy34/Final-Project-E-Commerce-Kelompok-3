@@ -1,5 +1,5 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useRef } from "react";
-import { Helmet } from "react-helmet";
 import Breadcrumb from "../components/about/Breadcrumb";
 import StorySection from "../components/about/StorySection";
 import StatsSection from "../components/about/StatsSection";

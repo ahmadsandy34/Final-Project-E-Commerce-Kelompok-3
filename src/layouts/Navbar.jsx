@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -41,6 +42,11 @@ const Navbar = ({ token }) => {
   const handleClick = () => {
     setCurrentUserIcon((prevIcon) => (prevIcon === User ? UserRed : User));
     setIsDropdownOpen((prev) => !prev);
+  };
+
+  const handleDropdownLinkClick = () => {
+    setIsDropdownOpen(false);
+    setCurrentUserIcon(User);
   };
 
   const handleLogout = () => {
@@ -123,16 +129,21 @@ const Navbar = ({ token }) => {
                     <img src={currentUserIcon} alt='User' className='w-7 h-7 cursor-pointer' onClick={handleClick} />
                     {isDropdownOpen && (
                       <div className='absolute right-0 mt-2 w-48 bg-gradient-to-t from-black via-black/80 to-black/60 backdrop-blur-xl text-white rounded-md z-10'>
-                        <Link to='/my-account' className='block px-2 py-2 text-sm hover:bg-gray-700'>
+                        <Link to='/my-account/profile' className='block px-2 py-2 text-sm hover:bg-gray-700' onClick={handleDropdownLinkClick}>
                           <img src={UserDrop} alt='User' className='inline w-7 h-7 me-1' /> Manage My Account
                         </Link>
-                        <Link to='/my-account' className='block px-2 py-2 text-sm hover:bg-gray-700'>
+                        <Link to='/my-account/orders' className='block px-2 py-2 text-sm hover:bg-gray-700' onClick={handleDropdownLinkClick}>
                           <img src={Order} alt='Order' className='inline w-6 h-6 me-2' /> My Order
                         </Link>
-                        <Link to='#' className='block px-2 py-2 text-sm hover:bg-gray-700'>
+                        <Link to='#' className='block px-2 py-2 text-sm hover:bg-gray-700' onClick={handleDropdownLinkClick}>
                           <img src={Reviews} alt='Reviews' className='inline w-6 h-6 me-2' /> My Reviews
                         </Link>
-                        <button onClick={handleLogout} className='block w-full text-left px-2 py-2 text-sm hover:bg-gray-700'>
+                        <button
+                          onClick={() => {
+                            handleDropdownLinkClick();
+                            handleLogout();
+                          }}
+                          className='block w-full text-left px-2 py-2 text-sm hover:bg-gray-700'>
                           <img src={Logout} alt='Logout' className='inline w-6 h-6 me-2' /> Logout
                         </button>
                       </div>
